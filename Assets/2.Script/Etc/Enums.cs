@@ -14,11 +14,10 @@ public enum EItemType
 
 public enum EEnemyType
 {
-    Default,
-    Direction,
-    Trace,
-    Teleport,
-    Boss
+    Mushroom,
+    Goblin,
+    Fly,
+    Skeleton
 }
 
 public enum EPlayerAIStateType

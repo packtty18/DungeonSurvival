@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7440d42a029cb4aab7ce0805ae6eda, type: 3}
   m_Name: DefaultStat
   m_EditorClassIdentifier: 
-  Health: 100
+  Level: 1
+  MaxHealth: 100
   RegenerationHealth: 0.1
   Damage: 10
   ArmorRate: 0
   EvasionRate: 0.2
-  MoveSpeed: 1
-  AttackSpeed: 1
+  MoveSpeed: 5
+  AttackDelay: 1
   SkillSizeMultiplierRate: 0
   SkillLiveTimeMultiplierRate: 0
   SkillSelectCount: 2

@@ -16,6 +16,4 @@ public class BodyAttack : MonoBehaviour, IAttackable
     {
         _damage = damage;
     }
-
-    
 }

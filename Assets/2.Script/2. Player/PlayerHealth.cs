@@ -3,7 +3,6 @@
 public class PlayerHealth : MonoBehaviour, IHealth
 {
     [SerializeField] private PlayerStat _stat;
-
     public float MaxHealth => _stat.MaxHealth;
     public float CurrentHealth => _stat.Health;
 
@@ -34,7 +33,6 @@ public class PlayerHealth : MonoBehaviour, IHealth
     {
         //시스템적으로 게임 종료처리
         //
-
         gameObject.SetActive(false);
     }
 
