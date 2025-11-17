@@ -7,6 +7,11 @@ public class EnemyHealth : MonoBehaviour, IHealth
 
     public float CurrentHealth => _stat.Health;
 
+    private void Start()
+    {
+        _stat = GetComponent<EnemyStat>();
+    }
+
     public void OnDead()
     {
         gameObject.SetActive(false);

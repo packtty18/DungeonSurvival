@@ -2,32 +2,42 @@
 
 public class AttackBox : MonoBehaviour
 {
-    [SerializeField] private float damageMultiplier = 1f; // 주는 데미지 조정
+    public SpawnType type;
+    [SerializeField] private float damageMultiplier = 1f;
     public float DamageMultiplier => damageMultiplier;
 
     public IAttackable Owner { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
-        Owner = GetComponent<IAttackable>();
+        // AttackBox는 보통 자식이므로 부모에서 IAttackable 검색
+        Owner = GetComponentInParent<IAttackable>();
+
+        if (Owner == null)
+            Debug.LogError($"[AttackBox] Owner(IAttackable) not found in parents! ({name})");
     }
+
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null)
-        {
+        if (collision == null)
             return;
-        }
 
-        
         if (collision.TryGetComponent(out HitBox hitBox))
         {
+            if (hitBox.type == type)
+            {
+                // 같은 진영이면 데미지 없음
+                return;
+            }
+
             IHealth target = hitBox.Owner;
             if (target != null)
             {
-                float finalDamage = Owner.Damage * hitBox.DamageMultiplier;
+                float finalDamage = Owner.Damage * hitBox.DamageMultiplier * DamageMultiplier;
+
                 target.OnHit(finalDamage);
 
-                Debug.Log($"[HitBox] {collision.name} took {finalDamage} damage");
+                Debug.Log($"[AttackBox] {collision.name} took {finalDamage} damage");
             }
         }
     }

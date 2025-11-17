@@ -3,7 +3,6 @@
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private EnemyStat _stat;
-    [SerializeField] private BodyAttack _bodyAttack;
 
     [SerializeField] private AttackPatternSO attackPattern;
     [SerializeField] private float attackCooldownTimer = 0f;
@@ -12,8 +11,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Start()
     {
-        _bodyAttack.GetComponentInChildren<BodyAttack>();
-        _bodyAttack.SetDamage(_stat.Damage);
+        _stat = GetComponent<EnemyStat>();
     }
 
     private void Update()

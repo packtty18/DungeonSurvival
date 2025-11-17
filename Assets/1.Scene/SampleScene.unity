@@ -288,7 +288,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141503145}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e440437cfa0295e4b9c7df81af20b655, type: 3}
   m_Name: 
@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 248011525}
   - component: {fileID: 248011524}
   - component: {fileID: 248011523}
+  - component: {fileID: 248011527}
   m_Layer: 0
   m_Name: EnemyProto
   m_TagString: Untagged
@@ -424,13 +425,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248011520}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 145f3caeeee7090419a618e27fdf5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _stat: {fileID: 0}
-  _bodyAttack: {fileID: 0}
   attackPattern: {fileID: 0}
   attackCooldownTimer: 0
 --- !u!114 &248011526
@@ -451,6 +451,18 @@ MonoBehaviour:
   _moveSpeed: 0
   _isTargetToPlayer: 0
   _baseStat: {fileID: 11400000, guid: af81336ec78fa404b8ea7dc1f8cbed9f, type: 2}
+--- !u!114 &248011527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248011520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 400b9961344bc6949a98e38d6aab176e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &308636206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,7 +1326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c314816c95cc66049906c6276178c743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplier: 0.5
+  type: 2
+  damageMultiplier: 1
 --- !u!61 &1354059434
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1345,7 +1358,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1438,7 +1451,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63325c4222f03aa4bb0c7b61ac9e67f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplier: 1
+  type: 1
+  _damageMultiplier: 1
 --- !u!61 &1572424529
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1641,7 +1655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63325c4222f03aa4bb0c7b61ac9e67f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplier: 1
+  type: 2
+  _damageMultiplier: 1
 --- !u!61 &2025732182
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1672,7 +1687,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
