@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IHealth
 {
     [SerializeField] private EnemyStat _stat;
+    [SerializeField] private Animator _animator;
     public float MaxHealth => _stat.MaxHealth;
 
     public float CurrentHealth => _stat.Health;
@@ -10,10 +12,19 @@ public class EnemyHealth : MonoBehaviour, IHealth
     private void Start()
     {
         _stat = GetComponent<EnemyStat>();
+        _animator = GetComponent<Animator>();
     }
 
     public void OnDead()
     {
+        _animator.SetBool("OnDead", true);
+        // 3초 후에 비활성화
+        StartCoroutine(DeactivateAfterSeconds(3f));
+    }
+
+    private IEnumerator DeactivateAfterSeconds(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
     }
 
@@ -29,6 +40,10 @@ public class EnemyHealth : MonoBehaviour, IHealth
         if (CurrentHealth <= 0)
         {
             OnDead();
+        }
+        else
+        {
+            _animator.SetTrigger("OnHit");
         }
     }
 }

@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Runtime.CompilerServices;
+using UnityEngine;
 
 public class Reposition : MonoBehaviour
 {
-    private Collider2D collider;
+    private Collider2D _collider;
 
     private void Start()
     {
-        collider = GetComponent<Collider2D>();
+        _collider = GetComponent<Collider2D>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -15,6 +16,7 @@ public class Reposition : MonoBehaviour
         {
             return;
         }
+
         Vector2 playerPos = GameManager.Instance.Player.transform.position;
         Vector2 myPos = transform.position;
         float diffX = Mathf.Abs(playerPos.x - myPos.x);
@@ -36,11 +38,35 @@ public class Reposition : MonoBehaviour
                     {
                         transform.Translate(Vector2.up * dirY * 40);
                     }
-                        break;
+                   break;
                 }
             case "Enemy":
                 {
-                    transform.Translate(playerDir * 10 + new Vector2(Random.Range(-3f, 3), Random.Range(-3f, 3f)));
+                    if (!_collider.enabled) 
+                        break;
+                    Vector2 save = transform.position;
+
+                    float offset = 10;
+                    float moveDistance = 20;
+
+                    Vector2 newPos = myPos;
+
+                    if (diffX > diffY)
+                    {
+                        float offsetY = Random.Range(-offset, offset);
+                        newPos.x = myPos.x + dirX * moveDistance;
+                        newPos.y = playerPos.y + offsetY;
+                    }
+                    else
+                    {
+                        float offsetX = Random.Range(-offset, offset);
+                        newPos.y = myPos.y + dirY * moveDistance;
+                        newPos.x = playerPos.x + offsetX;
+                    }
+
+                    transform.position = newPos;
+
+                    Debug.Log($"Enemy repositioned:{save} -> {transform.position}");
                     break;
                 }
         }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour, IMovable
 {
     [SerializeField] private EnemyStat _stat;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     [SerializeField] private Vector2 _currentDirection;
 
@@ -14,12 +15,14 @@ public class EnemyMove : MonoBehaviour, IMovable
     private void Start()
     {
         _stat = GetComponent<EnemyStat>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
     {
         SetDirection(GetNextDirection());
         Move();
+        SetMoveAnimation();
     }
 
     protected virtual Vector2 GetNextDirection()
@@ -34,7 +37,14 @@ public class EnemyMove : MonoBehaviour, IMovable
 
         return _currentDirection;
     }
-
+    private void SetMoveAnimation()
+    {
+        // Flip
+        if (CurrentDirection.x < -0.01f)
+            _spriteRenderer.flipX = true;
+        else if (CurrentDirection.x > 0.01f)
+            _spriteRenderer.flipX = false;
+    }
 
     public void Move()
     {

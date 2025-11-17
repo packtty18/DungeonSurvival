@@ -284,11 +284,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8758396010089867390}
   - component: {fileID: 8830169865612825178}
+  - component: {fileID: 6973652937372022632}
   - component: {fileID: 8914091417372780794}
   - component: {fileID: 7590342005832671550}
   - component: {fileID: 3370383749013015607}
   - component: {fileID: 9176171702239508815}
   - component: {fileID: 3978940951759698203}
+  - component: {fileID: 5810877937281183927}
   m_Layer: 0
   m_Name: Enemy_MushRoom
   m_TagString: Enemy
@@ -341,6 +343,52 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &6973652937372022632
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7948422611051022470}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.16}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.7, y: 1.05}
+  m_EdgeRadius: 0
 --- !u!114 &8914091417372780794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stat: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!114 &3370383749013015607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stat: {fileID: 0}
+  _spriteRenderer: {fileID: 0}
   _currentDirection: {x: 0, y: 0}
 --- !u!114 &9176171702239508815
 MonoBehaviour:
@@ -411,3 +461,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fdebda582f40146ac3fae0b65cd7a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5810877937281183927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7948422611051022470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c314816c95cc66049906c6276178c743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  damageMultiplier: 1
+  hitCooldown: 1

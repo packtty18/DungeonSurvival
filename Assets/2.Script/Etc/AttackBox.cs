@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
 
 public class AttackBox : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class AttackBox : MonoBehaviour
         Owner = GetComponentInParent<IAttackable>();
 
         if (Owner == null)
-            Debug.LogError($"[AttackBox] Owner(IAttackable) not found in parents! ({name})");
+            Debug.LogError($"[AttackBox] Owner(IAttackable) not found({name})");
     }
 
     private void Update()
@@ -40,7 +41,7 @@ public class AttackBox : MonoBehaviour
         if (!collision.TryGetComponent(out HitBox hitBox))
             return;
 
-        if (hitBox.type == type)
+        if (hitBox.Type == type)
             return; // 같은 진영이면 데미지 없음
 
         IHealth target = hitBox.Owner;
