@@ -6,11 +6,11 @@ public class PlayerStat : MonoBehaviour
     [SerializeField] private int _level;
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _health;
-    [SerializeField] private float _regenerationHealth;
     [SerializeField] private float _damage;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _regenerationHealth;
     [SerializeField] private float _armorRate;
     [SerializeField] private float _evasionRate;
-    [SerializeField] private float _moveSpeed;
     [SerializeField] private float _attackDelay;
 
     [Header("Skill Stats")]
@@ -25,15 +25,19 @@ public class PlayerStat : MonoBehaviour
 
     [Header("Base Stat SO")]
     [SerializeField] private PlayerStatSO _baseStat;
+    
 
+    
+
+    
     public int Level => _level;
-    public float MaxHealth => _maxHealth;   
+    public float MaxHealth => _maxHealth;
     public float Health => _health;
-    public float RegenerationHealth => _regenerationHealth;
     public float Damage => _damage;
+    public float MoveSpeed => _moveSpeed;
+    public float RegenerationHealth => _regenerationHealth;
     public float ArmorRate => _armorRate;
     public float EvasionRate => _evasionRate;
-    public float MoveSpeed => _moveSpeed;
     public float AttackDelay => _attackDelay;
 
     public float SkillSizeMultiplierRate => _skillSizeMultiplierRate;
@@ -51,6 +55,27 @@ public class PlayerStat : MonoBehaviour
         {
             ApplyBaseStat(_baseStat);
         }
+    }
+
+    private void ApplyBaseStat(PlayerStatSO stat)
+    {
+        _level = stat.Level;
+        _maxHealth = stat.MaxHealth;
+        _health = _maxHealth;
+        _regenerationHealth = stat.RegenerationHealth;
+        _damage = stat.Damage;
+        _armorRate = stat.ArmorRate;
+        _evasionRate = stat.EvasionRate;
+        _moveSpeed = stat.MoveSpeed;
+        _attackDelay = stat.AttackDelay;
+
+        _skillSizeMultiplierRate = stat.SkillSizeMultiplierRate;
+        _skillLiveTimeMultiplierRate = stat.SkillLiveTimeMultiplierRate;
+        _skillSelectCount = stat.SkillSelectCount;
+
+        _itemAcquisitionRadius = stat.ItemAcquisitionRadius;
+        _expMultiplierRate = stat.ExpMultiplierRate;
+        _treasureBoxDropRate = stat.TreasureBoxDropRate;
     }
 
     public void SetLevel(int level)
@@ -77,6 +102,10 @@ public class PlayerStat : MonoBehaviour
         _damage = Mathf.Max(0f, value);
     }
 
+    public void SetMoveSpeed(float value)
+    {
+        _moveSpeed = Mathf.Max(0f, value);
+    }
     public void SetArmorRate(float value)
     {
         _armorRate = Mathf.Clamp01(value);
@@ -85,11 +114,6 @@ public class PlayerStat : MonoBehaviour
     public void SetEvasionRate(float value)
     {
         _evasionRate = Mathf.Clamp01(value);
-    }
-
-    public void SetMoveSpeed(float value)
-    {
-        _moveSpeed = Mathf.Max(0f, value);
     }
 
     public void SetAttackSpeed(float value)
@@ -128,24 +152,5 @@ public class PlayerStat : MonoBehaviour
     }
 
   
-    private void ApplyBaseStat(PlayerStatSO stat)
-    {
-        _level = stat.Level;
-        _maxHealth = stat.MaxHealth;
-        _health = stat.Health;
-        _regenerationHealth = stat.RegenerationHealth;
-        _damage = stat.Damage;
-        _armorRate = stat.ArmorRate;
-        _evasionRate = stat.EvasionRate;
-        _moveSpeed = stat.MoveSpeed;
-        _attackDelay = stat.AttackDelay;
-
-        _skillSizeMultiplierRate = stat.SkillSizeMultiplierRate;
-        _skillLiveTimeMultiplierRate = stat.SkillLiveTimeMultiplierRate;
-        _skillSelectCount = stat.SkillSelectCount;
-
-        _itemAcquisitionRadius = stat.ItemAcquisitionRadius;
-        _expMultiplierRate = stat.ExpMultiplierRate;
-        _treasureBoxDropRate = stat.TreasureBoxDropRate;
-    }
+    
 }

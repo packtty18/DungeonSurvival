@@ -14,6 +14,7 @@ public enum EItemType
 
 public enum EEnemyType
 {
+    Default,
     Direction,
     Trace,
     Teleport,
@@ -47,15 +48,21 @@ public enum ESFXType
     PlayerHit
 }
 
-public enum EAttackType
+public enum EPlayerAttackType
 {
     PlayerDefualt,
     
 }
 
+public enum EEnemyAttackType
+{
+    EnemyDefualt,   
+}
+
 public enum EFactoryType
 {
-    Bullet,
+    PlayerAttack,
+    EnemyAttack,
     Enemy,
     Item
 }

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackFactory : FactoryBase<EAttackType>
+public class AttackFactory : FactoryBase<EPlayerAttackType>
 {
     //총알에 대한 생성을 담당
     //즉 BulletBase를 상속받는 클래스들 담당 생성
@@ -16,9 +16,9 @@ public class AttackFactory : FactoryBase<EAttackType>
 
     protected override void RegisterPrefabs()
     {
-        _prefabMap = new Dictionary<EAttackType, GameObject>
+        _prefabMap = new Dictionary<EPlayerAttackType, GameObject>
         {
-            { EAttackType.PlayerDefualt, _playerDefaultPrefab },
+            { EPlayerAttackType.PlayerDefualt, _playerDefaultPrefab },
             //{ EProjectileType.PlayerSub, _playerSubPrefab },
             //{ EProjectileType.PlayerCurve, _playerCurvePrefab },
             //{ EProjectileType.PlayerBezier, _playerBezierPrefab },
@@ -29,7 +29,7 @@ public class AttackFactory : FactoryBase<EAttackType>
     }
 
     //전처리까지 해서 반환
-    public GameObject MakeDamageObject(EAttackType type, Vector3 position, Quaternion rotation)
+    public GameObject MakeDamageObject(EPlayerAttackType type, Vector3 position, Quaternion rotation)
     {
         //여기서 풀에서 빼오기
         BaseDamageObject bullet = CreateObject(type).GetComponent<BaseDamageObject>();
@@ -38,7 +38,6 @@ public class AttackFactory : FactoryBase<EAttackType>
         bullet.OnSpawn();
         bullet.gameObject.SetActive(true);
         return bullet.gameObject;
-        return null;
     }
 
 }

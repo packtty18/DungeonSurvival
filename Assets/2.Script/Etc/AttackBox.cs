@@ -2,12 +2,14 @@
 
 public class AttackBox : MonoBehaviour
 {
-    //공격 범위를 명시 + 데미지처리 필요
+    [SerializeField] private float damageMultiplier = 1f; // 주는 데미지 조정
+    public float DamageMultiplier => damageMultiplier;
+
     public IAttackable Owner { get; private set; }
 
     private void Start()
     {
-        Owner = GetComponentInParent<IAttackable>();
+        Owner = GetComponent<IAttackable>();
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
