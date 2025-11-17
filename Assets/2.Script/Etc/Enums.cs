@@ -1,4 +1,11 @@
-﻿public enum EItemType
+﻿public enum SpawnType
+{
+    None,   //누구의 편도 아님 => 중립
+    Player, //플레이어의 진영임 
+    Enemy,  //적의 진영임
+}
+
+public enum EItemType
 {
     MoveSpeedUp,
     HealthUp,
@@ -40,15 +47,10 @@ public enum ESFXType
     PlayerHit
 }
 
-public enum EBulletType
+public enum EAttackType
 {
     PlayerDefualt,
-    PlayerCurve,
-    PlayerSub,
-    PlayerBezier,
-    PlayerSpiral,
-    PlayerBomb,
-    EnemyDefault,
+    
 }
 
 public enum EFactoryType
