@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 1475107209748013583}
   - component: {fileID: 7497881143254499994}
   - component: {fileID: 5688207377681130547}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   damageMultiplier: 1
+  hitCooldown: 1
 --- !u!1 &9079045464929856749
 GameObject:
   m_ObjectHideFlags: 0

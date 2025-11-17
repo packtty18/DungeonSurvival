@@ -2,14 +2,15 @@
 
 public class PlayerHealth : MonoBehaviour, IHealth
 {
-    [SerializeField] private PlayerStat _stat;
+    private PlayerBase _base;
+    private PlayerStat _stat => _base.Stat;
     public float MaxHealth => _stat.MaxHealth;
     public float CurrentHealth => _stat.Health;
 
 
-    private void Start()
+    public void Init(PlayerBase playerBase)
     {
-        _stat = GetComponent<PlayerStat>();
+        _base = playerBase;
     }
 
     public void OnHit(float amount)
@@ -32,7 +33,6 @@ public class PlayerHealth : MonoBehaviour, IHealth
     public void OnDead()
     {
         //시스템적으로 게임 종료처리
-        //
         gameObject.SetActive(false);
     }
 

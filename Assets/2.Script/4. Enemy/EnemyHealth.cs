@@ -23,6 +23,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
     public void OnDead()
     {
         _animation.SetDead(true);
+        _base.IsReady = false;
         // 3초 후에 비활성화
         StartCoroutine(DeactivateAfterSeconds(3f));
     }

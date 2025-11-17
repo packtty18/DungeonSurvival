@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour, IMovable
 {
     [Header("Component")]
-    [SerializeField] private PlayerInput _input;
-    [SerializeField] private PlayerStat _stat;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animator _animator;
+
+    private PlayerBase _base;
+    private PlayerInput _input => _base.Input;
+    private PlayerStat _stat => _base.Stat;
 
     [Header("MoveStat")]
     [SerializeField] private Vector2 _currentDirection = Vector2.zero;
@@ -17,14 +21,23 @@ public class PlayerMove : MonoBehaviour, IMovable
 
     private void Start()
     {
-        _input = GetComponent<PlayerInput>();
-        _stat = GetComponent<PlayerStat>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
     }
 
+    public void Init(PlayerBase playerBase)
+    {
+        _base = playerBase;
+       
+    }
+
     private void Update()
     {
+        if(_base == null || !_base.IsReady)
+        {
+            return;
+        }   
+        
         SetDirection(_input.MoveDirection);
         Move();
         SetMoveAnimation();

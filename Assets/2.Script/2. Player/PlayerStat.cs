@@ -2,6 +2,7 @@
 
 public class PlayerStat : MonoBehaviour
 {
+    private PlayerBase _base;
     [Header("Runtime Stats")]
     [SerializeField] private int _level;
     [SerializeField] private float _maxHealth;
@@ -25,11 +26,7 @@ public class PlayerStat : MonoBehaviour
 
     [Header("Base Stat SO")]
     [SerializeField] private PlayerStatSO _baseStat;
-    
 
-    
-
-    
     public int Level => _level;
     public float MaxHealth => _maxHealth;
     public float Health => _health;
@@ -48,9 +45,9 @@ public class PlayerStat : MonoBehaviour
     public float ExpMultiplierRate => _expMultiplierRate;
     public float TreasureBoxDropRate => _treasureBoxDropRate;
 
-
-    private void Awake()
+    public void Init(PlayerBase playerBase)
     {
+        _base = playerBase; 
         if (_baseStat != null)
         {
             ApplyBaseStat(_baseStat);

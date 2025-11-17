@@ -4,12 +4,23 @@ using UnityEngine.UI;
 
 public class PlayerInput : MonoBehaviour
 {
+    private PlayerBase _base;
     public Vector2 MoveDirection { get; private set; } = Vector2.zero;
     public Vector2 MouseWorldPosition { get; private set; } = Vector2.zero;
     //public bool IsInputAttack { get; private set; } = false;
-    
+
+    public void Init(PlayerBase playerBase)
+    {
+        _base = playerBase;
+    }
+
     private void Update()
     {
+        if (_base == null || !_base.IsReady)
+        {
+            return;
+        }
+
         Vector2 moveInput = Vector2.zero;
         
         float h = Input.GetAxisRaw("Horizontal");

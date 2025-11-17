@@ -7,7 +7,8 @@ public class PlayerAttack : MonoBehaviour
 {
     //플레이어의 조작을 통한 기본 공격
     //공격범위, 공격속도, 공격발동 관리
-    [SerializeField] private PlayerStat _stat;
+    private PlayerBase _base;
+    [SerializeField] private PlayerStat _stat => _base.Stat;
 
     [SerializeField] private Transform _attackTransform;
     [SerializeField] private GameObject _attackObjectProto;
@@ -18,14 +19,21 @@ public class PlayerAttack : MonoBehaviour
     private float _coolTimer;
 
 
-    private void Start()
+    public void Init(PlayerBase playerBase)
     {
-        _stat = GetComponent<PlayerStat>();
+        _base = playerBase;
+
         _coolTimer = _coolTime;
     }
 
     private void Update()
     {
+        if (_base == null || !_base.IsReady)
+        {
+            return;
+        }
+
+
         // 쿨타임 감소
         if (_coolTimer > 0f)
             _coolTimer -= Time.deltaTime;
