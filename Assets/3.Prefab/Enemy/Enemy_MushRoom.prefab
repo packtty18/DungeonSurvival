@@ -288,9 +288,10 @@ GameObject:
   - component: {fileID: 7590342005832671550}
   - component: {fileID: 3370383749013015607}
   - component: {fileID: 9176171702239508815}
+  - component: {fileID: 3978940951759698203}
   m_Layer: 0
   m_Name: Enemy_MushRoom
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -398,3 +399,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 0
+--- !u!114 &3978940951759698203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7948422611051022470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53fdebda582f40146ac3fae0b65cd7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
