@@ -34,9 +34,4 @@ public class PlayerMove : MonoBehaviour, IMovable
     {
         _currentDirection = direction;
     }
-
-    public void SetSpeed(float value)
-    {
-        _stat.SetMoveSpeed(value);
-    }
 }

@@ -4,7 +4,6 @@ public class PlayerHealth : MonoBehaviour, IHealth
 {
     [SerializeField] private PlayerStat _stat;
 
-
     public float MaxHealth => _stat.MaxHealth;
     public float CurrentHealth => _stat.Health;
 

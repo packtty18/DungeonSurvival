@@ -44,7 +44,7 @@ public class PlayerAttack : MonoBehaviour
         if(FactoryManager.IsManagerExist())
         {
             AttackFactory factory = FactoryManager.Instance.GetFactory<AttackFactory>();
-            factory.MakeDamageObject(EAttackType.PlayerDefualt, transform.position, _attackTransform.rotation);
+            factory.MakeDamageObject(EPlayerAttackType.PlayerDefualt, transform.position, _attackTransform.rotation);
 
         }
         else
