@@ -4,8 +4,8 @@ public interface IMovable
 {
     public float CurrentSpeed { get; }
     //다음 프레임에 움질일 방향 정의
-    public Vector2 SetDirection();
+    public void SetDirection(Vector2 direction);
 
     //업데이트에서 사용하는 Move
-    public void Move(Vector2 direction);
+    public void Move();
 }
