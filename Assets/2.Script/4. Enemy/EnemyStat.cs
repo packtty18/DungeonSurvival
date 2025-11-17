@@ -21,6 +21,11 @@ public class EnemyStat : MonoBehaviour
 
     private void Awake()
     {
+        Init();
+    }
+
+    public void Init()
+    {
         if (_baseStat != null)
         {
             ApplyBaseStat(_baseStat);

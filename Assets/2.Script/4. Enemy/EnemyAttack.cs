@@ -2,21 +2,34 @@
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] private EnemyStat _stat;
+    private EnemyBase _base;
+    private EnemyStat _stat => _base.Stat;
 
     [SerializeField] private AttackPatternSO attackPattern;
     [SerializeField] private float attackCooldownTimer = 0f;
 
-    public Transform Target => GameManager.Instance.Player.transform;
-
+    public Transform Target;   //AttackSO 참조
     private void Start()
     {
-        _stat = GetComponent<EnemyStat>();
+        _base = GetComponent<EnemyBase>();
+    }
+
+    public void Init()
+    {
+        Target = GameManager.Instance.Player.transform;
+
     }
 
     private void Update()
     {
-        if (attackPattern == null) return;
+        if (_base == null || !_base.IsReady)
+        {
+            return;
+        }
+        if (attackPattern == null)
+        {
+            return;
+        }
 
         if (attackCooldownTimer > 0)
         {

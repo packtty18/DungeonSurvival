@@ -191,7 +191,7 @@ Animator:
   m_GameObject: {fileID: 3149056912440510950}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9b99ae9b4c0c3064cb83e0d90d388987, type: 2}
+  m_Controller: {fileID: 9100000, guid: c55a34a64ffaae04aba00100ef91902f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -308,11 +308,14 @@ GameObject:
   - component: {fileID: 8758396010089867390}
   - component: {fileID: 8830169865612825178}
   - component: {fileID: 6973652937372022632}
+  - component: {fileID: 8192956094470577555}
   - component: {fileID: 8914091417372780794}
   - component: {fileID: 7590342005832671550}
   - component: {fileID: 3370383749013015607}
   - component: {fileID: 9176171702239508815}
   - component: {fileID: 3978940951759698203}
+  - component: {fileID: 2006826255354488121}
+  - component: {fileID: -1602560060975197453}
   m_Layer: 0
   m_Name: Enemy_Fly
   m_TagString: Enemy
@@ -411,6 +414,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.59}
   m_EdgeRadius: 0
+--- !u!114 &8192956094470577555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7948422611051022470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455e777028f32e74895ad32bd0d54b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsReady: 0
 --- !u!114 &8914091417372780794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,8 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc97241bbd9abbb4987f62915caac4c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stat: {fileID: 0}
-  _animator: {fileID: 0}
 --- !u!114 &3370383749013015607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,8 +469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deeaa398f16a6344dacc532a15e55c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stat: {fileID: 0}
-  _spriteRenderer: {fileID: 0}
   _currentDirection: {x: 0, y: 0}
 --- !u!114 &9176171702239508815
 MonoBehaviour:
@@ -483,3 +495,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fdebda582f40146ac3fae0b65cd7a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2006826255354488121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7948422611051022470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145f3caeeee7090419a618e27fdf5ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPattern: {fileID: 0}
+  attackCooldownTimer: 0
+  Target: {fileID: 0}
+--- !u!114 &-1602560060975197453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7948422611051022470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0729c9faf55785247ba011ee13b8e5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteObject: {fileID: 0}

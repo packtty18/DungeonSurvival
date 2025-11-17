@@ -29,7 +29,7 @@ public class LiveTimer : MonoBehaviour
     {
         yield return new WaitForSeconds(liveTime);
 
-        if (TryGetComponent<IPoolable>(out IPoolable poolable))
+        if (TryGetComponent(out IPoolable poolable))
         {
             poolable.OnDespawn();
         }

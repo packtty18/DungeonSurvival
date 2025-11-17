@@ -1,11 +1,13 @@
 ﻿using System;
+using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour, IMovable
 {
-    [SerializeField] private EnemyStat _stat;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    private EnemyBase _base;
+    private EnemyStat _stat => _base.Stat;
+    private EnemyAnimation _animation => _base.Animation;
 
     [SerializeField] private Vector2 _currentDirection;
 
@@ -14,12 +16,20 @@ public class EnemyMove : MonoBehaviour, IMovable
 
     private void Start()
     {
-        _stat = GetComponent<EnemyStat>();
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _base = GetComponent<EnemyBase>();
+    }
+
+    public void Init()
+    {
+        //초기화 로직
     }
 
     private void Update()
     {
+        if (_base == null || !_base.IsReady)
+        {
+            return;
+        }
         SetDirection(GetNextDirection());
         Move();
         SetMoveAnimation();
@@ -41,9 +51,9 @@ public class EnemyMove : MonoBehaviour, IMovable
     {
         // Flip
         if (CurrentDirection.x < -0.01f)
-            _spriteRenderer.flipX = true;
+            _animation.SetSpriteFlip(true);
         else if (CurrentDirection.x > 0.01f)
-            _spriteRenderer.flipX = false;
+            _animation.SetSpriteFlip(false);
     }
 
     public void Move()
