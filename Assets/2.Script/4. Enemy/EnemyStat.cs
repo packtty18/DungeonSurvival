@@ -19,7 +19,7 @@ public class EnemyStat : MonoBehaviour
     [Header("Base Stat SO")]
     [SerializeField] private EnemyStatSO _baseStat;
 
-    private void Start()
+    private void Awake()
     {
         if (_baseStat != null)
         {

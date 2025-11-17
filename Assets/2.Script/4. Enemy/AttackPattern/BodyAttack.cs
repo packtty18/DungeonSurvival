@@ -3,7 +3,7 @@
 public class BodyAttack : MonoBehaviour, IAttackable
 {
     private EnemyStat _stat;
-    private float _damage;
+    [SerializeField]private float _damage;
     public float Damage => _damage;
 
     private void Start()
