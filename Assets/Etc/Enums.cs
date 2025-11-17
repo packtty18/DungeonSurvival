@@ -1,0 +1,66 @@
+﻿public enum EItemType
+{
+    MoveSpeedUp,
+    HealthUp,
+    AttackSpeedUp
+}
+
+public enum EEnemyType
+{
+    Direction,
+    Trace,
+    Teleport,
+    Boss
+}
+
+public enum EPlayerAIStateType
+{
+    Idle,
+    Attack,
+    Retreat
+}
+
+public enum EPlayerMoveState
+{
+    Idle,
+    Chase,
+    Retreat
+}
+
+public enum ESFXType
+{ 
+    GameOver,
+    PlayerFire,
+    Bomb,
+    BombLoop,
+    Explosion,
+    ItemHeal,
+    ItemAttackUp,
+    ItemMoveUp,
+    PlayerHit
+}
+
+public enum EBulletType
+{
+    PlayerDefualt,
+    PlayerCurve,
+    PlayerSub,
+    PlayerBezier,
+    PlayerSpiral,
+    PlayerBomb,
+    EnemyDefault,
+}
+
+public enum EFactoryType
+{
+    Bullet,
+    Enemy,
+    Item
+}
+
+public enum EuttonType
+{
+    Attack,
+    Bomb,
+    DamageUp
+}
