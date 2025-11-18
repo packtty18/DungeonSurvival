@@ -1,6 +1,4 @@
-﻿using JetBrains.Annotations;
-using System;
-using System.Collections;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,13 +16,9 @@ public class AttackFactory : FactoryBase<EPlayerAttackType>
     {
         _prefabMap = new Dictionary<EPlayerAttackType, GameObject>
         {
-            { EPlayerAttackType.PlayerDefualt, _playerDefaultPrefab },
-            //{ EProjectileType.PlayerSub, _playerSubPrefab },
-            //{ EProjectileType.PlayerCurve, _playerCurvePrefab },
-            //{ EProjectileType.PlayerBezier, _playerBezierPrefab },
-            //{ EProjectileType.PlayerSpiral, _playerSpiralPrefab },
-            //{ EProjectileType.PlayerBomb, _playerBombPrefab },
-            //{ EProjectileType.EnemyDefault, _enemyDefaultPrefab }
+            { EPlayerAttackType.Bullet, _playerDefaultPrefab },
+            { EPlayerAttackType.Grenade, _playerDefaultPrefab },
+            { EPlayerAttackType.Explosion, _playerDefaultPrefab },
         };
     }
 
@@ -32,12 +26,12 @@ public class AttackFactory : FactoryBase<EPlayerAttackType>
     public GameObject MakeDamageObject(EPlayerAttackType type, Vector3 position, Quaternion rotation)
     {
         //여기서 풀에서 빼오기
-        BaseDamageObject bullet = CreateObject(type).GetComponent<BaseDamageObject>();
-        bullet.transform.position = position;
-        bullet.transform.rotation = rotation;
-        bullet.OnSpawn();
-        bullet.gameObject.SetActive(true);
-        return bullet.gameObject;
+        BaseDamageObject obj = CreateObject(type).GetComponent<BaseDamageObject>();
+        obj.transform.position = position;
+        obj.transform.rotation = rotation;
+        obj.OnSpawn();
+
+        return obj.gameObject;
     }
 
 }

@@ -6,7 +6,6 @@ public abstract class FactoryBase : MonoBehaviour
 {
     public abstract void InitFactory();
 }
-
 //팩토리의 베이스
 public abstract class FactoryBase<TEnum> : FactoryBase where TEnum : Enum
 {

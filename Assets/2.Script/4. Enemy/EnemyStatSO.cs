@@ -12,5 +12,8 @@ public class EnemyStatSO : ScriptableObject
     [Header("Damage")]
     public float Damage = 5f;
 
+    public int Score = 10;
+
+
     public bool IsTargetToPlayer = true;
 }

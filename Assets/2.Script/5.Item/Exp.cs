@@ -15,5 +15,6 @@ public class Exp : ItemBase
 
     public override void OnEffect()
     {
+        SoundManager.Instance.CreateSFX(ESFXType.GetExp, transform.position);
         _player.Level.AddExp(Value);
     }}

@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
     private ItemDropper _item;
     public float MaxHealth => _stat.MaxHealth;
     public float CurrentHealth => _stat.Health;
-
+    public bool IsTreasure = false;
     private void Start()
     {
         _item = GetComponent<ItemDropper>();
@@ -24,10 +24,27 @@ public class EnemyHealth : MonoBehaviour, IHealth
     public void OnDead()
     {
         _animation?.SetDead(true);
+
         _base.IsReady = false;
         _base.SetColliderEnable(false);
+
         _item?.SpawnRandomItem();
+
+        if(ScoreManager.IsManagerExist())
+        {
+            ScoreManager.Instance.AddScore(_base.Stat.Score);
+        }
+
         // 3초 후에 비활성화
+        if (IsTreasure)
+        {
+            SoundManager.Instance.CreateSFX(ESFXType.ChestOpen, transform.position);
+        }
+        else
+        {
+            _base.MakeExplosionEffect();
+        }
+            
         StartCoroutine(DeactivateAfterSeconds(3f));
     }
 
@@ -62,6 +79,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
         }
         else
         {
+            //_base.Move.ApplyKnockback();
             _animation?.SetOnHit();
         }
     }

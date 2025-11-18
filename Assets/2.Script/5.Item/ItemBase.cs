@@ -6,10 +6,6 @@ public abstract class ItemBase : MonoBehaviour , IPoolable
     protected PlayerBase _player;
     public float Value;
 
-    private void Awake()
-    {
-        OnSpawn();
-    }
     public void OnSpawn()
     {
         Init();

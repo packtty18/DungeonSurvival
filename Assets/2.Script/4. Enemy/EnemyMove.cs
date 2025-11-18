@@ -1,6 +1,4 @@
-﻿using System;
-using TMPro.EditorUtilities;
-using Unity.VisualScripting;
+﻿
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour, IMovable
@@ -9,10 +7,16 @@ public class EnemyMove : MonoBehaviour, IMovable
     private EnemyStat _stat => _base.Stat;
     private EnemyAnimation _animation => _base.Animation;
 
-    [SerializeField] private Vector2 _currentDirection;
-
     public float CurrentSpeed => _stat.MoveSpeed;
     public Vector2 CurrentDirection => _currentDirection;
+
+    [SerializeField] private Vector2 _currentDirection;
+    [Header("Knockback Settings")]
+    [SerializeField] private float knockbackForce = 4f;
+    [SerializeField] private float knockbackDuration = 0.15f;
+
+    private Vector2 _knockbackVelocity;
+    private float _knockbackTimer;
 
     public void Init(EnemyBase enemyBase)
     {
@@ -26,9 +30,24 @@ public class EnemyMove : MonoBehaviour, IMovable
         {
             return;
         }
+        OnKnockBack();
         SetDirection(GetNextDirection());
         Move();
         SetMoveAnimation();
+    }
+
+    private void OnKnockBack()
+    {
+        if (_knockbackTimer > 0)
+        {
+            _knockbackTimer -= Time.deltaTime;
+            transform.position += (Vector3)(_knockbackVelocity * Time.deltaTime);
+
+            if (_knockbackTimer <= 0)
+                _knockbackVelocity = Vector2.zero;
+
+            return; 
+        }
     }
 
     protected virtual Vector2 GetNextDirection()
@@ -60,5 +79,12 @@ public class EnemyMove : MonoBehaviour, IMovable
     public void SetDirection(Vector2 direction)
     {
         _currentDirection = direction;
+    }
+
+    public void ApplyKnockback()
+    {
+        Vector2 reverse = -CurrentDirection;
+        _knockbackVelocity = reverse * knockbackForce;
+        _knockbackTimer = knockbackDuration;
     }
 }

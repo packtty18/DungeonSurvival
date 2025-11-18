@@ -5,12 +5,11 @@ public class GameManager : SimpleSingleton<GameManager>
     public GameObject PlayerPrefab;
     public GameObject Player;
 
-
     protected override void Awake()
     {
         base.Awake();
 
-        if(Player == null )
+        if (Player == null)
         {
             GameObject player = Instantiate(PlayerPrefab);
             Player = player;

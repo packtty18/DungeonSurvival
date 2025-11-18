@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Rendering;
 
 public class AttackBox : MonoBehaviour
 {
     public SpawnType type;
+    public bool AutoDestroyOnHit = false;
     [SerializeField] private float damageMultiplier = 1f;
     public float DamageMultiplier => damageMultiplier;
 
     [SerializeField] private float hitCooldown = 1f; // 같은 대상에게 재피격까지 시간
     private Dictionary<IHealth, float> _hitTimers = new Dictionary<IHealth, float>();
 
-    public IAttackable Owner { get; private set; }
+    
+    public GameObject Owner { get; private set; }
 
     private void Awake()
     {
-        Owner = GetComponentInParent<IAttackable>();
+        Owner = transform.parent.gameObject;
 
         if (Owner == null)
             Debug.LogError($"[AttackBox] Owner(IAttackable) not found({name})");
@@ -44,6 +45,9 @@ public class AttackBox : MonoBehaviour
         if (hitBox.Type == type)
             return; // 같은 진영이면 데미지 없음
 
+        if (!Owner.TryGetComponent(out IAttackable attack))
+            return;
+
         IHealth target = hitBox.Owner;
         if (target != null)
         {
@@ -51,12 +55,24 @@ public class AttackBox : MonoBehaviour
             if (_hitTimers.ContainsKey(target))
                 return;
 
-            float finalDamage = Owner.Damage * hitBox.DamageMultiplier * DamageMultiplier;
+            float finalDamage = attack.Damage * hitBox.DamageMultiplier * DamageMultiplier;
             target.OnHit(finalDamage);
             Debug.Log($"[AttackBox] {collision.name} took {finalDamage} damage");
 
             // 타이머 시작
             _hitTimers[target] = hitCooldown;
+        }
+
+        if(AutoDestroyOnHit)
+        {
+            if(Owner.TryGetComponent(out IPoolable poolable))
+            {
+                poolable.OnDespawn(); 
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

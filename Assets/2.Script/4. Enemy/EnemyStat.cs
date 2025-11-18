@@ -8,12 +8,14 @@ public class EnemyStat : MonoBehaviour
     [SerializeField] private float _health;
     [SerializeField] private float _damage;
     [SerializeField] private float _moveSpeed;
+    [SerializeField] private int _score;
     [SerializeField] private bool _isTargetToPlayer;
 
     public float MaxHealth => _maxHealth;
     public float Health => _health;
     public float Damage => _damage;
     public float MoveSpeed => _moveSpeed;
+    public int Score => _score;
     public bool IsTargetToPlayer => _isTargetToPlayer;
 
 
@@ -36,6 +38,7 @@ public class EnemyStat : MonoBehaviour
         _health = _maxHealth;
         _damage = stat.Damage;
         _moveSpeed = stat.MoveSpeed;
+        _score = stat.Score;
         _isTargetToPlayer= stat.IsTargetToPlayer;
     }
     public void SetMaxHealth(float value)

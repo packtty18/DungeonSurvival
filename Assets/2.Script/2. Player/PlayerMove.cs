@@ -1,13 +1,10 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using TMPro.EditorUtilities;
+﻿
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour, IMovable
 {
     [Header("Component")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Animator _animator;
 
     private PlayerBase _base;
     private PlayerInput _input => _base.Input;
@@ -22,7 +19,6 @@ public class PlayerMove : MonoBehaviour, IMovable
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
     }
 
     public void Init(PlayerBase playerBase)
@@ -53,7 +49,7 @@ public class PlayerMove : MonoBehaviour, IMovable
 
         // IsMove
         bool isMoving = CurrentDirection.magnitude > 0.01f;
-        _animator.SetBool("IsMove", isMoving);
+        _base.Animator.SetBool("IsMove", isMoving);
     }
 
 

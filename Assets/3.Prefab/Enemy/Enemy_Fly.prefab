@@ -167,8 +167,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1748071629
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -4795363162621231457, guid: 6d7cd4f7505dc674c891ca8946cfd98b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  AutoDestroyOnHit: 0
   damageMultiplier: 1
   hitCooldown: 1
 --- !u!1 &7948422611051022470
@@ -313,7 +314,6 @@ GameObject:
   - component: {fileID: 7590342005832671550}
   - component: {fileID: 3370383749013015607}
   - component: {fileID: -1602560060975197453}
-  - component: {fileID: 2006826255354488121}
   - component: {fileID: 9176171702239508815}
   - component: {fileID: 3978940951759698203}
   - component: {fileID: 4901221175180729847}
@@ -427,7 +427,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455e777028f32e74895ad32bd0d54b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: []
   IsReady: 0
+  ExplosionPrefabs: {fileID: 6389665260281853818, guid: 34711fe5f8f8a2b4ead2f4cb12c7dff6, type: 3}
 --- !u!114 &8914091417372780794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,6 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc97241bbd9abbb4987f62915caac4c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsTreasure: 0
 --- !u!114 &3370383749013015607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +474,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentDirection: {x: 0, y: 0}
+  knockbackForce: 4
+  knockbackDuration: 0.15
 --- !u!114 &-1602560060975197453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,21 +489,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteObject: {fileID: 0}
---- !u!114 &2006826255354488121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7948422611051022470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 145f3caeeee7090419a618e27fdf5ace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPattern: {fileID: 0}
-  attackCooldownTimer: 0
-  Target: {fileID: 0}
 --- !u!114 &9176171702239508815
 MonoBehaviour:
   m_ObjectHideFlags: 0

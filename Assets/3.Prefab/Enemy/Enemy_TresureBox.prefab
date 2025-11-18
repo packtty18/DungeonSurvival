@@ -281,7 +281,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455e777028f32e74895ad32bd0d54b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: []
   IsReady: 0
+  ExplosionPrefabs: {fileID: 0}
 --- !u!114 &3404947252410996618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +301,7 @@ MonoBehaviour:
   _damage: 0
   _moveSpeed: 0
   _isTargetToPlayer: 0
-  _baseStat: {fileID: 11400000, guid: af81336ec78fa404b8ea7dc1f8cbed9f, type: 2}
+  _baseStat: {fileID: 11400000, guid: ed8b246c4089ef14eb05f6ff0733b34d, type: 2}
 --- !u!114 &8493622836566666466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc97241bbd9abbb4987f62915caac4c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsTreasure: 1
 --- !u!114 &8399344477475414789
 MonoBehaviour:
   m_ObjectHideFlags: 0
