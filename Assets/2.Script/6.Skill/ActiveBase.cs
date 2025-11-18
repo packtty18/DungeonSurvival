@@ -1,25 +1,24 @@
 ﻿using UnityEngine;
 
-public abstract class ActiveBase : MonoBehaviour
+public abstract class ActiveBase : SkillBase
 {
     public ActiveSkillData Data;
-    public int Level { get; private set; } = 1;
-    protected float cooldownTimer = 0f;
+    protected PlayerStat _stat => Owner.Stat; 
+    
+    [SerializeField]protected float cooldownTimer = 0f;
 
     public bool IsReady => cooldownTimer <= 0f;
 
-    public virtual void Init(ActiveSkillData data)
+    public override void Init()
     {
-        Data = data;
-        Level = 1;
-        cooldownTimer = 0f;
+        base.Init();
     }
 
-    public void LevelUp()
+    public override void LevelUp()
     {
         if (Level < Data.maxLevel)
         {
-            Level++;
+            SetLevel(Level+1);
             Debug.Log($"{Data.skillType} Level Up! New Level: {Level}");
         }
     }
@@ -27,7 +26,9 @@ public abstract class ActiveBase : MonoBehaviour
     public virtual void TickCooldown(float deltaTime)
     {
         if (cooldownTimer > 0f)
+        {
             cooldownTimer -= deltaTime;
+        }
     }
 
     public abstract void Activate(Vector3 target);

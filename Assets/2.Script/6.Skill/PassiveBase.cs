@@ -1,25 +1,23 @@
 ﻿using UnityEngine;
 
-public abstract class PassiveBase : MonoBehaviour
+public abstract class PassiveBase : SkillBase
 {
     public PassiveSkillData Data;
-    public int Level { get; private set; } = 1;
 
-    public virtual void Init(PassiveSkillData data)
+    public override void Init()
     {
-        Data = data;
-        Level = 1;
+        base.Init();
         Apply();
     }
 
-    public void LevelUp()
+    public override void LevelUp()
     {
         if (Level < Data.maxLevel)
         {
-            Level++;
+            SetLevel(Level+1);
             Apply();
         }
     }
 
-    public abstract void Apply(); // PlayerStat에 적용
+    public abstract void Apply();
 }

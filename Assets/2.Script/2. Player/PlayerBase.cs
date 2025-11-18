@@ -7,15 +7,17 @@ public class PlayerBase : MonoBehaviour
     private PlayerStat _stat;
     private PlayerHealth _health;
     private PlayerMove _move;
-    private PlayerAttack _attack;
     private PlayerLevel _level;
+    private PlayerSkill _skill;
+    private Animator _animator;
 
     public PlayerInput Input => _input;
     public PlayerStat Stat => _stat;
     public PlayerHealth Health =>_health;
     public PlayerMove Move => _move;
-    public PlayerAttack Attack => _attack;
     public PlayerLevel Level => _level;
+    public PlayerSkill Skill => _skill;
+    public Animator Animator => _animator;
 
     public bool IsReady = false;
 
@@ -25,19 +27,22 @@ public class PlayerBase : MonoBehaviour
         _stat = GetComponent<PlayerStat>();
         _health = GetComponent<PlayerHealth>();
         _move = GetComponent<PlayerMove>();
-        _attack = GetComponent<PlayerAttack>();
         _level = GetComponent<PlayerLevel>();
+        _skill = GetComponent<PlayerSkill>();
+        _animator = GetComponent<Animator>();
+        
         Init();
     }
 
     public void Init()
     {
-        _input.Init(this);
-        _stat.Init(this);
-        _health.Init(this);
-        _move.Init(this);
-        _attack.Init(this);
-        _level.Init(this);
+        _input?.Init(this);
+        _stat?.Init(this);
+        _health?.Init(this);
+        _move?.Init(this);
+        _level?.Init(this);
+        _skill?.Init(this);
+        _animator.SetBool("Ondead", false);
         IsReady = true;
     }
 

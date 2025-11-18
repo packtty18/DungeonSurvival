@@ -62,6 +62,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
         }
         else
         {
+            //_base.Move.ApplyKnockback();
             _animation?.SetOnHit();
         }
     }

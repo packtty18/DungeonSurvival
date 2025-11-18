@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca5a24cf847d2d741bfd22d96a2a66c6, type: 3}
-  m_Name: ShotGunData
+  m_Name: RapdiFire
   m_EditorClassIdentifier: 
-  skillType: 1
+  skillType: 2
   maxLevel: 5
   levelStats:
-  - AttackCount: 3
-    Cooldown: 8
+  - AttackCount: 4
+    Cooldown: 10
     Duration: 3
     DamageRate: 1
-  - AttackCount: 4
-    Cooldown: 7
+  - AttackCount: 5
+    Cooldown: 9
     Duration: 3
     DamageRate: 1.5
-  - AttackCount: 5
-    Cooldown: 6
+  - AttackCount: 6
+    Cooldown: 8
     Duration: 3
     DamageRate: 2
-  - AttackCount: 6
-    Cooldown: 5
+  - AttackCount: 7
+    Cooldown: 7
     Duration: 3
     DamageRate: 2.5
-  - AttackCount: 7
-    Cooldown: 4
+  - AttackCount: 8
+    Cooldown: 6
     Duration: 3
     DamageRate: 3

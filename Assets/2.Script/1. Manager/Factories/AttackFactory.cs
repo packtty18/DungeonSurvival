@@ -18,13 +18,9 @@ public class AttackFactory : FactoryBase<EPlayerAttackType>
     {
         _prefabMap = new Dictionary<EPlayerAttackType, GameObject>
         {
-            { EPlayerAttackType.PlayerDefualt, _playerDefaultPrefab },
-            //{ EProjectileType.PlayerSub, _playerSubPrefab },
-            //{ EProjectileType.PlayerCurve, _playerCurvePrefab },
-            //{ EProjectileType.PlayerBezier, _playerBezierPrefab },
-            //{ EProjectileType.PlayerSpiral, _playerSpiralPrefab },
-            //{ EProjectileType.PlayerBomb, _playerBombPrefab },
-            //{ EProjectileType.EnemyDefault, _enemyDefaultPrefab }
+            { EPlayerAttackType.Bullet, _playerDefaultPrefab },
+            { EPlayerAttackType.Grenade, _playerDefaultPrefab },
+            { EPlayerAttackType.Explosion, _playerDefaultPrefab },
         };
     }
 

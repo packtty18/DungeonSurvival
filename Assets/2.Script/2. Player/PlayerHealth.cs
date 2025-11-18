@@ -33,7 +33,8 @@ public class PlayerHealth : MonoBehaviour, IHealth
     public void OnDead()
     {
         //시스템적으로 게임 종료처리
-        gameObject.SetActive(false);
+        _base.Animator.SetBool("Ondead", true);
+        _base.IsReady = false;
     }
 
     [ContextMenu("hit")]    

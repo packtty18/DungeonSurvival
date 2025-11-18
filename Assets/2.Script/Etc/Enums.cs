@@ -50,8 +50,10 @@ public enum ESFXType
 
 public enum EPlayerAttackType
 {
-    PlayerDefualt,
-    
+    Bullet,
+    Grenade,
+    Explosion
+
 }
 
 public enum EEnemyAttackType
