@@ -25,6 +25,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
     {
         _animation?.SetDead(true);
         _base.IsReady = false;
+        _base.SetColliderEnable(false);
         _item?.SpawnRandomItem();
         // 3초 후에 비활성화
         StartCoroutine(DeactivateAfterSeconds(3f));

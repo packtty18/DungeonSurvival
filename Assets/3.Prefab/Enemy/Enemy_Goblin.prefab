@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 3978940951759698203}
   - component: {fileID: 7423506631023986695}
   - component: {fileID: 360949042037838422}
+  - component: {fileID: -6591893174586932050}
   m_Layer: 0
   m_Name: Enemy_Goblin
   m_TagString: Enemy
@@ -523,3 +524,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteObject: {fileID: 0}
+--- !u!114 &-6591893174586932050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7948422611051022470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c9d3db25e5ba34fb6ad6331af69cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targets: 000000000100000002000000
+  _weights:
+  - 60
+  - 30
+  - 10
