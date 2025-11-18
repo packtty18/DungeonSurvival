@@ -167,8 +167,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1748071629
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 4944230376442633554, guid: c6ac0078f39473048b9f54d791095f35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  AutoDestroyOnHit: 0
   damageMultiplier: 1
   hitCooldown: 1
 --- !u!1 &7948422611051022470
@@ -459,6 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc97241bbd9abbb4987f62915caac4c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsTreasure: 0
 --- !u!114 &3370383749013015607
 MonoBehaviour:
   m_ObjectHideFlags: 0

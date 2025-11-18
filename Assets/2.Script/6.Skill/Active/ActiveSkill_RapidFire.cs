@@ -18,7 +18,7 @@ public class ActiveSkill_RapidFire : ActiveBase
             Owner.StopCoroutine(firingCoroutine);
 
         firingCoroutine = Owner.StartCoroutine(FireRoutine(target));
-        _coolTimer = Data.levelStats[Level - 1].Cooldown;
+        CoolTimer = Data.levelStats[Level - 1].Cooldown;
     }
 
     private IEnumerator FireRoutine(Vector3 target)
@@ -33,14 +33,19 @@ public class ActiveSkill_RapidFire : ActiveBase
         for (int i = 0; i < bulletCount; i++)
         {
             SoundManager.Instance.CreateSFX(ESFXType.Bullet, transform.position);
-            Bullet bullet = factory.MakeDamageObject(EPlayerAttackType.Bullet, origin, Quaternion.identity)
-                                .GetComponent<Bullet>();
-            bullet.Init(direction, stat.DamageRate * _stat.Damage, bulletSpeed, bulletLifetime);
+            Vector3 dir = (target - origin).normalized;
 
-            yield return new WaitForSeconds(delayBetweenBullets); // 딜레이
+            float rotationZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+            Quaternion rot = Quaternion.Euler(0f, 0f, rotationZ);
+            
+            Bullet bullet = factory.MakeDamageObject(EPlayerAttackType.Bullet, origin, rot)
+                                  .GetComponent<Bullet>();
+
+            bullet.Init(dir, stat.DamageRate * _stat.Damage, bulletSpeed, bulletLifetime);
+            yield return new WaitForSeconds(delayBetweenBullets); // 총알 사이 딜레이
         }
 
-        
         firingCoroutine = null;
     }
+
 }

@@ -301,7 +301,7 @@ MonoBehaviour:
   _damage: 0
   _moveSpeed: 0
   _isTargetToPlayer: 0
-  _baseStat: {fileID: 11400000, guid: af81336ec78fa404b8ea7dc1f8cbed9f, type: 2}
+  _baseStat: {fileID: 11400000, guid: ed8b246c4089ef14eb05f6ff0733b34d, type: 2}
 --- !u!114 &8493622836566666466
 MonoBehaviour:
   m_ObjectHideFlags: 0

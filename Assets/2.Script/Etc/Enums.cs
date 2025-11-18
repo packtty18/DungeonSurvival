@@ -42,9 +42,9 @@ public enum EPlayerAttackType
 
 public enum EuttonType
 {
-    Attack,
-    Bomb,
-    DamageUp
+    Heal,
+    ShotgunUpgrade,
+    RapidFireUpgrade
 }
 
 public enum EActiveSkillType

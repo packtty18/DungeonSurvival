@@ -5,9 +5,9 @@ public abstract class ActiveBase : SkillBase
     public ActiveSkillData Data;
     protected PlayerStat _stat => Owner.Stat; 
     
-    [SerializeField]protected float _coolTimer = 0f;
+    public float CoolTimer = 0f;
 
-    public bool IsReady => _coolTimer <= 0f;
+    public bool IsReady => CoolTimer <= 0f;
 
     public override void Init()
     {
@@ -25,9 +25,9 @@ public abstract class ActiveBase : SkillBase
 
     public virtual void TickCooldown(float deltaTime)
     {
-        if (_coolTimer > 0f)
+        if (CoolTimer > 0f)
         {
-            _coolTimer -= deltaTime;
+            CoolTimer -= deltaTime;
         }
     }
 

@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 
 public class PlayerSkill : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class PlayerSkill : MonoBehaviour
     public void Init(PlayerBase playerBase)
     {
         _base = playerBase;
-        Debug();
+        AddActiveSkill(EActiveSkillType.Shotgun);
+        AddActiveSkill(EActiveSkillType.RapidFire);
     }
 
     private void Update()
@@ -47,13 +49,6 @@ public class PlayerSkill : MonoBehaviour
             skill.Activate(DefaultTransform.position);
         }
     }
-    
-    [ContextMenu("ActivateShotgun")]
-    public void Debug()
-    {
-        AddActiveSkill(EActiveSkillType.Shotgun);
-        AddActiveSkill(EActiveSkillType.RapidFire);
-    }
 
     public void AddActiveSkill(EActiveSkillType type)
     {
@@ -75,5 +70,28 @@ public class PlayerSkill : MonoBehaviour
 
             break;
         }
+    }
+
+    public ActiveBase GetSkill(EActiveSkillType type)
+    {
+        foreach (ActiveBase skill in ActivaSkills)
+        {
+            if (skill.Data.skillType != type)
+                continue;
+
+            return skill;
+        }
+
+        return null;
+    }
+
+    public void UpgradeShotgun()
+    {
+        AddActiveSkill(EActiveSkillType.Shotgun);
+    }
+
+    public void UpgradeRapidFire()
+    {
+        AddActiveSkill(EActiveSkillType.RapidFire);
     }
 }

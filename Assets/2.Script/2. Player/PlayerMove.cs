@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using TMPro.EditorUtilities;
+﻿
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour, IMovable

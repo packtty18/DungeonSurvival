@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e1a358a63b7c9e478935d7740f07c64, type: 3}
-  m_Name: EnemyDefault
+  m_Name: Skeleton
   m_EditorClassIdentifier: 
-  MaxHealth: 20
+  MaxHealth: 40
   MoveSpeed: 3
-  Damage: 5
+  Damage: 30
+  Score: 100
   IsTargetToPlayer: 1

@@ -24,9 +24,16 @@ public class EnemyHealth : MonoBehaviour, IHealth
     public void OnDead()
     {
         _animation?.SetDead(true);
+
         _base.IsReady = false;
         _base.SetColliderEnable(false);
+
         _item?.SpawnRandomItem();
+
+        if(ScoreManager.IsManagerExist())
+        {
+            ScoreManager.Instance.AddScore(_base.Stat.Score);
+        }
 
         // 3초 후에 비활성화
         if (IsTreasure)
