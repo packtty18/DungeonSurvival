@@ -28,6 +28,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
         _base.SetColliderEnable(false);
         _item?.SpawnRandomItem();
         // 3초 후에 비활성화
+        _base.MakeExplosionEffect();
         StartCoroutine(DeactivateAfterSeconds(3f));
     }
 

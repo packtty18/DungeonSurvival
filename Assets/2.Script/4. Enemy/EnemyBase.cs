@@ -6,13 +6,11 @@ public class EnemyBase : MonoBehaviour, IPoolable
     private EnemyStat _stat;
     private EnemyHealth _health;
     private EnemyMove _move;
-    private EnemyAttack _attack;
     private EnemyAnimation _animation;
 
     public EnemyStat Stat => _stat;
     public EnemyHealth Health => _health;
     public EnemyMove Move => _move;
-    public EnemyAttack Attack => _attack;
     public EnemyAnimation Animation =>  _animation;
 
     [SerializeField] private Collider2D[] _collider;
@@ -20,12 +18,14 @@ public class EnemyBase : MonoBehaviour, IPoolable
 
     public bool IsReady = false;
 
+    [Header("ExplosionPrefab")]
+    public GameObject ExplosionPrefabs;
+
     private void Awake()
     {
         _stat = GetComponent<EnemyStat>();
         _health = GetComponent<EnemyHealth>();
         _move = GetComponent<EnemyMove>();
-        _attack = GetComponent<EnemyAttack>();
         _animation = GetComponent<EnemyAnimation>();
         _collider = GetComponentsInChildren<Collider2D>();
     }
@@ -36,7 +36,6 @@ public class EnemyBase : MonoBehaviour, IPoolable
         _stat?.Init(this);
         _health?.Init(this);
         _move?.Init(this);
-        _attack?.Init(this);
         _animation?.Init(this);
 
         SetColliderEnable(true);
@@ -49,6 +48,7 @@ public class EnemyBase : MonoBehaviour, IPoolable
     {
         //사망
         IsReady = false;
+        
         gameObject.SetActive(false);
     }
 
@@ -58,5 +58,21 @@ public class EnemyBase : MonoBehaviour, IPoolable
         {
             collider.enabled = active;
         }
+    }
+
+    public void MakeExplosionEffect()
+    {
+        GameObject effect = Instantiate(ExplosionPrefabs, transform.position, Quaternion.identity);
+
+        if (effect.TryGetComponent<CameraShake>(out CameraShake shaker))
+        {
+            shaker.StartShake();
+        }
+
+        if (SoundManager.IsManagerExist())
+        {
+            SoundManager.Instance.CreateSFX(ESFXType.Explosion, transform.position, effect.transform);
+        }
+
     }
 }

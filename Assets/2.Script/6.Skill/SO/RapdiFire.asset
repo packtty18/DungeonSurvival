@@ -16,22 +16,22 @@ MonoBehaviour:
   maxLevel: 5
   levelStats:
   - AttackCount: 4
-    Cooldown: 10
+    Cooldown: 5
     Duration: 3
     DamageRate: 1
   - AttackCount: 5
-    Cooldown: 9
+    Cooldown: 5
     Duration: 3
     DamageRate: 1.5
   - AttackCount: 6
-    Cooldown: 8
+    Cooldown: 4
     Duration: 3
     DamageRate: 2
   - AttackCount: 7
-    Cooldown: 7
+    Cooldown: 4
     Duration: 3
     DamageRate: 2.5
   - AttackCount: 8
-    Cooldown: 6
+    Cooldown: 3
     Duration: 3
     DamageRate: 3

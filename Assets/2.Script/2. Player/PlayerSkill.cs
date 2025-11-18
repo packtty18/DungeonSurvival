@@ -6,13 +6,10 @@ public class PlayerSkill : MonoBehaviour
     private PlayerBase _base;
 
     public List<ActiveBase> ActivaSkills = new List<ActiveBase>();
-    public List<PassiveBase> PassiveSkills = new List<PassiveBase>();
-
     private List<ActiveBase> ActivateActiveSkills = new List<ActiveBase>();
-    private List<PassiveBase> ActivatePassiveSkills = new List<PassiveBase>();
 
     public Transform DefaultTransform;
-    public float autoSkillRange = 10f;
+    public float AutoSkillRange = 10f;
 
     public void Init(PlayerBase playerBase)
     {
@@ -60,7 +57,7 @@ public class PlayerSkill : MonoBehaviour
     {
         EnemyBase[] enemies = GameObject.FindObjectsOfType<EnemyBase>();
         Transform closest = null;
-        float minDist = autoSkillRange;
+        float minDist = AutoSkillRange;
 
         foreach (var enemy in enemies)
         {
@@ -107,27 +104,6 @@ public class PlayerSkill : MonoBehaviour
         }
     }
 
-    public void AddPassiveSkill(EPassiveSkillType type)
-    {
-        foreach (PassiveBase skill in PassiveSkills)
-        {
-            if (skill.Data.skillType != type)
-                continue;
-
-            if (!skill.IsUnlocked)
-            {
-                skill.IsUnlocked = true;
-                skill.Init();
-                ActivatePassiveSkills.Add(skill);
-            }
-            else
-            {
-                skill.LevelUp();
-            }
-
-            break;
-        }
-    }
 
 
     public void LevelUpSkill(int index)
