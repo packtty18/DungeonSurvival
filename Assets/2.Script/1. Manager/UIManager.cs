@@ -175,7 +175,7 @@ public class UIManager : SimpleSingleton<UIManager>
         {
             return;
         }
-
+        ScoreManager.Instance.ReduceScore(cost);
         // 플레이어 체력 회복
         PlayerHealth health = playerBase.GetComponent<PlayerHealth>();
         if (health != null)

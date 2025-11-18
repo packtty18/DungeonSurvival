@@ -25,13 +25,14 @@ public class ActiveSkill_RapidFire : ActiveBase
     {
         ActiveSkillLevelData stat = Data.levelStats[Level - 1];
         int bulletCount = stat.AttackCount;
-        Vector3 origin = transform.position;
-        Vector3 direction = (target - origin).normalized;
+        
 
         AttackFactory factory = FactoryManager.Instance.GetFactory<AttackFactory>();
 
         for (int i = 0; i < bulletCount; i++)
         {
+            Vector3 origin = transform.position;
+            Vector3 direction = (target - origin).normalized;
             SoundManager.Instance.CreateSFX(ESFXType.Bullet, transform.position);
             Vector3 dir = (target - origin).normalized;
 
