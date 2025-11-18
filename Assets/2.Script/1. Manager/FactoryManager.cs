@@ -17,7 +17,6 @@ public class FactoryManager : SimpleSingleton<FactoryManager>
     private void SetFactoryMap()
     {
         _factoryMap = new Dictionary<Type, FactoryBase>();
-
         foreach (FactoryBase factory in _factoryList)
         {
             if (factory == null) 

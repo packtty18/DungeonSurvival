@@ -6,24 +6,27 @@ public class EnemyHealth : MonoBehaviour, IHealth
     private EnemyBase _base;
     private EnemyStat _stat => _base.Stat;
     private EnemyAnimation _animation => _base.Animation;
-
+    private ItemDropper _item;
     public float MaxHealth => _stat.MaxHealth;
     public float CurrentHealth => _stat.Health;
 
     private void Start()
     {
-        _base = GetComponent<EnemyBase>();
+        _item = GetComponent<ItemDropper>();
+
     }
 
-    public void Init()
+    public void Init(EnemyBase enemyBase)
     {
-
+        _base = enemyBase;
     }
 
     public void OnDead()
     {
-        _animation.SetDead(true);
+        _animation?.SetDead(true);
         _base.IsReady = false;
+        _base.SetColliderEnable(false);
+        _item?.SpawnRandomItem();
         // 3초 후에 비활성화
         StartCoroutine(DeactivateAfterSeconds(3f));
     }
@@ -41,7 +44,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
             return;
         }
 
-        _stat.SetHealth(Mathf.Max(CurrentHealth + amount, MaxHealth));
+        _stat?.SetHealth(Mathf.Max(CurrentHealth + amount, MaxHealth));
     }
 
     public void OnHit(float amount)
@@ -51,7 +54,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
             return;
 
         }
-        _stat.SetHealth(Mathf.Max(CurrentHealth - amount, 0));
+        _stat?.SetHealth(Mathf.Max(CurrentHealth - amount, 0));
 
         if (CurrentHealth <= 0)
         {
@@ -59,7 +62,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
         }
         else
         {
-            _animation.SetOnHit();
+            _animation?.SetOnHit();
         }
     }
 }

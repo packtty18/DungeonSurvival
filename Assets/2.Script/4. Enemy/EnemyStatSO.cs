@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine;
+
 [CreateAssetMenu(menuName = "SO/Enemy/Stat", fileName = "EnemyStat")]
 public class EnemyStatSO : ScriptableObject
 {

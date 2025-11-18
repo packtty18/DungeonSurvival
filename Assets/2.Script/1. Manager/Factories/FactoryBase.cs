@@ -48,6 +48,11 @@ public abstract class FactoryBase<TEnum> : FactoryBase where TEnum : Enum
     {
         foreach (TEnum type in Enum.GetValues(typeof(TEnum)))
         {
+            if(type.ToString() == "None")
+            {
+                continue;
+            }
+
             _poolMap[type] = new GameObject[_poolSize];
 
             for (int i = 0; i < _poolSize; i++)

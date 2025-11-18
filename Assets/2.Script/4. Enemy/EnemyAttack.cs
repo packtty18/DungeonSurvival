@@ -14,8 +14,9 @@ public class EnemyAttack : MonoBehaviour
         _base = GetComponent<EnemyBase>();
     }
 
-    public void Init()
+    public void Init(EnemyBase enemyBase)
     {
+        _base = enemyBase;
         Target = GameManager.Instance.Player.transform;
 
     }

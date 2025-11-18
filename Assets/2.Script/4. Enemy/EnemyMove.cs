@@ -14,14 +14,10 @@ public class EnemyMove : MonoBehaviour, IMovable
     public float CurrentSpeed => _stat.MoveSpeed;
     public Vector2 CurrentDirection => _currentDirection;
 
-    private void Start()
-    {
-        _base = GetComponent<EnemyBase>();
-    }
-
-    public void Init()
+    public void Init(EnemyBase enemyBase)
     {
         //초기화 로직
+        _base = enemyBase;
     }
 
     private void Update()

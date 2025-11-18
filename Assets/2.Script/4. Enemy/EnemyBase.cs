@@ -15,6 +15,9 @@ public class EnemyBase : MonoBehaviour, IPoolable
     public EnemyAttack Attack => _attack;
     public EnemyAnimation Animation =>  _animation;
 
+    [SerializeField] private Collider2D[] _collider;
+
+
     public bool IsReady = false;
 
     private void Awake()
@@ -24,15 +27,20 @@ public class EnemyBase : MonoBehaviour, IPoolable
         _move = GetComponent<EnemyMove>();
         _attack = GetComponent<EnemyAttack>();
         _animation = GetComponent<EnemyAnimation>();
+        _collider = GetComponentsInChildren<Collider2D>();
     }
 
+    [ContextMenu("OnSpawn")]
     public void OnSpawn()
     {
-        _stat.Init();
-        _health.Init();
-        _move.Init();
-        _attack.Init();
-        _animation.Init();
+        _stat?.Init(this);
+        _health?.Init(this);
+        _move?.Init(this);
+        _attack?.Init(this);
+        _animation?.Init(this);
+
+        SetColliderEnable(true);
+
         IsReady = true;
     }
 
@@ -44,5 +52,11 @@ public class EnemyBase : MonoBehaviour, IPoolable
         gameObject.SetActive(false);
     }
 
-    
+    public void SetColliderEnable(bool active)
+    {
+        foreach (var collider in _collider)
+        {
+            collider.enabled = active;
+        }
+    }
 }
