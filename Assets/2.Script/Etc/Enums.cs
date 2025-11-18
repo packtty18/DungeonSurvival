@@ -21,31 +21,16 @@ public enum EEnemyType
     Treasure,
 }
 
-public enum EPlayerAIStateType
-{
-    Idle,
-    Attack,
-    Retreat
-}
-
-public enum EPlayerMoveState
-{
-    Idle,
-    Chase,
-    Retreat
-}
-
 public enum ESFXType
 { 
+    BGM,
     GameOver,
-    PlayerFire,
-    Bomb,
-    BombLoop,
-    Explosion,
-    ItemHeal,
-    ItemAttackUp,
-    ItemMoveUp,
-    PlayerHit
+    Bullet,
+    PlayerHit,
+    GetExp,
+    ChestOpen,
+    EnemyHit,
+    Explosion
 }
 
 public enum EPlayerAttackType
@@ -53,20 +38,6 @@ public enum EPlayerAttackType
     Bullet,
     Grenade,
     Explosion
-
-}
-
-public enum EEnemyAttackType
-{
-    EnemyDefualt,   
-}
-
-public enum EFactoryType
-{
-    PlayerAttack,
-    EnemyAttack,
-    Enemy,
-    Item
 }
 
 public enum EuttonType
@@ -86,13 +57,6 @@ public enum EActiveSkillType
     IceShot,
     Grenade,
     Molotov
-}
-
-public enum EPassiveSkillType
-{ 
-    None,
-    AttackUp,
-    
 }
 
 

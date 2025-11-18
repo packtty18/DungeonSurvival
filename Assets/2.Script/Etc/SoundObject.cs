@@ -5,7 +5,6 @@ public class SoundObject : MonoBehaviour
     private AudioSource _audio;
     private bool _autoDestroy;
 
-
     private void Awake()
     {
         _audio = GetComponent<AudioSource>();
@@ -31,4 +30,5 @@ public class SoundObject : MonoBehaviour
             _audio.loop = true;
         }
     }
+
 }

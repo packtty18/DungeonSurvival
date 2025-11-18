@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 public class SoundManager : SimpleSingleton<SoundManager>
 {
     /*
@@ -13,35 +12,21 @@ public class SoundManager : SimpleSingleton<SoundManager>
 
     [Header("정적 생성된 AudioSource")]
     [SerializeField] private AudioSource _bgmSource;
-    [SerializeField] private AudioSource _playerFireSource;
-    [SerializeField] private AudioSource _playerHittedSource;
 
     [Header("사용할 클립")]
     [SerializeField] private AudioClip _bgmSound;
     [SerializeField] private AudioClip _gameOverSound;
     [SerializeField] private AudioClip _bulletSound;
-    [SerializeField] private AudioClip _healSound;
-    [SerializeField] private AudioClip _attackSpeedSound;
-    [SerializeField] private AudioClip _moveSpeedSound;
+    [SerializeField] private AudioClip _expSound;
     [SerializeField] private AudioClip _playerHitSound;
-    [SerializeField] private AudioClip _bombExplosion;
-    [SerializeField] private AudioClip _bombLoop;
-
-    [SerializeField] private AudioClip[] _explosionSound;
-
+    [SerializeField] private AudioClip _chestOpen;
+    [SerializeField] private AudioClip _explosion;
     private void Start()
     {
         if (_bgmSource == null)
         {
             CreateBGMObject();
         }
-
-        if( _playerFireSource == null|| _playerHittedSource == null)
-        {
-            Debug.LogError("Player AudioSource Missing");
-        }
-
-        
     }
 
     private void CreateBGMObject()
@@ -61,37 +46,7 @@ public class SoundManager : SimpleSingleton<SoundManager>
 
         return soundObject;
     }
-
-    public void PlayerSFX(ESFXType type)
-    {
-        switch(type)
-        {
-            case ESFXType.PlayerFire:
-                {
-                    _playerFireSource.Play();
-                    break;
-                }
-            case ESFXType.PlayerHit:
-                {
-                    _playerHittedSource.Play();
-                    break;
-                }
-        }
-    }
-
-    public void PlayItemSound(EItemType itemType, Transform parent)
-    {
-        switch (itemType)
-        {
-            case EItemType.Exp:
-                {
-                   CreateSFX(ESFXType.ItemHeal, transform.position, parent);
-                    break;
-                }
-            
-        }
-    }
-
+    
     public GameObject CreateSFX(ESFXType sfx, Vector3 position, Transform parent = null)
     {
         AudioClip clipToPlay = null;
@@ -104,36 +59,29 @@ public class SoundManager : SimpleSingleton<SoundManager>
                     clipToPlay = _gameOverSound;
                     break;
                 }
-            case ESFXType.ItemHeal:
+            case ESFXType.Bullet:
                 {
-                    clipToPlay = _healSound;
+                    clipToPlay = _bulletSound;
                     break;
                 }
-            case ESFXType.ItemAttackUp:
+            case ESFXType.PlayerHit:
                 {
-                    clipToPlay = _attackSpeedSound;
+                    clipToPlay = _playerHitSound;
                     break;
                 }
-            case ESFXType.ItemMoveUp:
+            case ESFXType.GetExp:
                 {
-                    clipToPlay = _moveSpeedSound;
+                    clipToPlay = _expSound;
                     break;
                 }
-                
-            case ESFXType.Bomb:
+            case ESFXType.ChestOpen:
                 {
-                    clipToPlay = _bombExplosion;
+                    clipToPlay = _chestOpen;
                     break;
                 }
-            case ESFXType.BombLoop:
-                {
-                    clipToPlay = _bombLoop;
-                    autoDestroy = false;
-                }
-                break;
             case ESFXType.Explosion:
                 {
-                    clipToPlay = _explosionSound[Random.Range(0, _explosionSound.Length)];
+                    clipToPlay = _explosion;
                     break;
                 }
             default:
