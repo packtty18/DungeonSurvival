@@ -73,3 +73,24 @@ public enum EuttonType
     Bomb,
     DamageUp
 }
+
+public enum EActiveSkillType
+{
+    None,
+    Shotgun,
+    RapidFire,
+    FlameShot,
+    ElectricShot,
+    IceShot,
+    Grenade,
+    Molotov
+}
+
+public enum EPassiveSkillType
+{ 
+    None,
+    AttackUp,
+    
+}
+
+

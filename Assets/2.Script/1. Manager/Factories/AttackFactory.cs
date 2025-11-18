@@ -32,12 +32,12 @@ public class AttackFactory : FactoryBase<EPlayerAttackType>
     public GameObject MakeDamageObject(EPlayerAttackType type, Vector3 position, Quaternion rotation)
     {
         //여기서 풀에서 빼오기
-        BaseDamageObject bullet = CreateObject(type).GetComponent<BaseDamageObject>();
-        bullet.transform.position = position;
-        bullet.transform.rotation = rotation;
-        bullet.OnSpawn();
-        bullet.gameObject.SetActive(true);
-        return bullet.gameObject;
+        BaseDamageObject obj = CreateObject(type).GetComponent<BaseDamageObject>();
+        obj.transform.position = position;
+        obj.transform.rotation = rotation;
+        obj.OnSpawn();
+
+        return obj.gameObject;
     }
 
 }

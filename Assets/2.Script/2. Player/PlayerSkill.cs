@@ -1,8 +1,35 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerSkill : MonoBehaviour
 {
-    //플레이어의 스킬 획득, 발동 등을 관리함
-    //스킬에는 액티브, 패시브, 엑스트라 존재
-    [SerializeField] private PlayerStat _stat;
+    public List<ActiveBase> ActiveSkills = new();
+    public List<PassiveBase> PassiveSkills = new();
+
+    private void Update()
+    {
+        float timer = Time.deltaTime;
+
+        foreach (var skill in ActiveSkills)
+            skill.TickCooldown(timer);
+    }
+
+    public void ActivateSkill(int index, Vector3 target)
+    {
+        if (index < 0 || index >= ActiveSkills.Count)
+        {
+            return;
+        }
+
+        ActiveSkills[index].Activate(target);
+    }
+
+    public void LevelUpSkill(int index)
+    {
+        if (index < 0 || index >= ActiveSkills.Count)
+        {
+            return;
+        }
+        ActiveSkills[index].LevelUp();
+    }
 }
