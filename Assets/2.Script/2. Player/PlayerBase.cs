@@ -10,7 +10,6 @@ public class PlayerBase : MonoBehaviour
     private PlayerLevel _level;
     private PlayerSkill _skill;
     private Animator _animator;
-
     public PlayerInput Input => _input;
     public PlayerStat Stat => _stat;
     public PlayerHealth Health =>_health;
@@ -42,8 +41,14 @@ public class PlayerBase : MonoBehaviour
         _move?.Init(this);
         _level?.Init(this);
         _skill?.Init(this);
-        _animator.SetBool("Ondead", false);
+        _animator.SetBool("OnDead", false);
+        SetCollider(true);
         IsReady = true;
+    }
+
+    public void SetCollider(bool active)
+    {
+        GetComponent<Collider2D>().enabled = active;
     }
 
 }

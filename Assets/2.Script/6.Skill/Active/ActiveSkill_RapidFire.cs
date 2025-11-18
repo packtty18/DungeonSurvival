@@ -18,7 +18,7 @@ public class ActiveSkill_RapidFire : ActiveBase
             Owner.StopCoroutine(firingCoroutine);
 
         firingCoroutine = Owner.StartCoroutine(FireRoutine(target));
-        cooldownTimer = Data.levelStats[Level - 1].Cooldown;
+        _coolTimer = Data.levelStats[Level - 1].Cooldown;
     }
 
     private IEnumerator FireRoutine(Vector3 target)
@@ -32,6 +32,7 @@ public class ActiveSkill_RapidFire : ActiveBase
 
         for (int i = 0; i < bulletCount; i++)
         {
+            SoundManager.Instance.CreateSFX(ESFXType.Bullet, transform.position);
             Bullet bullet = factory.MakeDamageObject(EPlayerAttackType.Bullet, origin, Quaternion.identity)
                                 .GetComponent<Bullet>();
             bullet.Init(direction, stat.DamageRate * _stat.Damage, bulletSpeed, bulletLifetime);

@@ -19,7 +19,7 @@ public class ActiveSkill_Shotgun : ActiveBase
 
         Vector3 origin = transform.position;
         Vector3 direction = (target - origin).normalized;
-
+        SoundManager.Instance.CreateSFX(ESFXType.Bullet, transform.position);
         for (int i = 0; i < bulletCount; i++)
         {
             float angle = -angleSpread / 2 + i * (angleSpread / (bulletCount - 1));
@@ -29,7 +29,7 @@ public class ActiveSkill_Shotgun : ActiveBase
             bullet.Init(dir, stat.DamageRate * _stat.Damage, bulletSpeed, bulletLifetime);
         }
 
-        cooldownTimer = stat.Cooldown;
+        _coolTimer = stat.Cooldown;
 
         Debug.Log($"Shotgun Fired! Bullets: {bulletCount}, Cooldown: {stat.Cooldown}");
     }

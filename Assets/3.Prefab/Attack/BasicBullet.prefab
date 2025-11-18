@@ -238,5 +238,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  AutoDestroyOnHit: 1
   damageMultiplier: 1
   hitCooldown: 1

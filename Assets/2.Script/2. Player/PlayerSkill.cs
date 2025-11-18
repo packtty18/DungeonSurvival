@@ -36,45 +36,18 @@ public class PlayerSkill : MonoBehaviour
 
     private void AutoCastSkills()
     {
+        if (DefaultTransform.position == Vector3.zero)
+            return;
+
         foreach (var skill in ActivateActiveSkills)
         {
             if (!skill.IsReady)
                 continue;
 
-            Transform target = FindClosestEnemy(skill);
-            if (target != null)
-            {
-                skill.Activate(target.position);
-            }
-            else
-            {
-                skill.Activate(DefaultTransform.position);
-            }
+            skill.Activate(DefaultTransform.position);
         }
     }
-
-    private Transform FindClosestEnemy(ActiveBase skill)
-    {
-        EnemyBase[] enemies = GameObject.FindObjectsOfType<EnemyBase>();
-        Transform closest = null;
-        float minDist = AutoSkillRange;
-
-        foreach (var enemy in enemies)
-        {
-            if (!enemy.IsReady) 
-                continue;
-
-            float dist = Vector3.Distance(transform.position, enemy.transform.position);
-            if (dist < minDist)
-            {
-                minDist = dist;
-                closest = enemy.transform;
-            }
-        }
-
-        return closest;
-    }
-
+    
     [ContextMenu("ActivateShotgun")]
     public void Debug()
     {
@@ -102,15 +75,5 @@ public class PlayerSkill : MonoBehaviour
 
             break;
         }
-    }
-
-
-
-    public void LevelUpSkill(int index)
-    {
-        if (index < 0 || index >= ActivateActiveSkills.Count) 
-            return;
-
-        ActivateActiveSkills[index].LevelUp();
     }
 }

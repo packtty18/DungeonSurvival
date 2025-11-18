@@ -41,6 +41,7 @@ public class EnemyBase : MonoBehaviour, IPoolable
         SetColliderEnable(true);
 
         IsReady = true;
+        gameObject.SetActive(true);
     }
 
 
@@ -62,6 +63,8 @@ public class EnemyBase : MonoBehaviour, IPoolable
 
     public void MakeExplosionEffect()
     {
+        if (ExplosionPrefabs == null)
+            return;
         GameObject effect = Instantiate(ExplosionPrefabs, transform.position, Quaternion.identity);
 
         if (effect.TryGetComponent<CameraShake>(out CameraShake shaker))

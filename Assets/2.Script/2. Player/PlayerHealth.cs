@@ -15,9 +15,12 @@ public class PlayerHealth : MonoBehaviour, IHealth
 
     public void OnHit(float amount)
     {
+        if (!_base.IsReady)
+            return;
+
         //hp감소
         _stat.SetHealth(Mathf.Max(CurrentHealth - amount, 0));
-
+        SoundManager.Instance.CreateSFX(ESFXType.PlayerHit, transform.position);
         if(CurrentHealth <= 0)
         {
             OnDead();
@@ -26,6 +29,8 @@ public class PlayerHealth : MonoBehaviour, IHealth
     }
     public void OnHeal(float amount)
     {
+        if (!_base.IsReady)
+            return;
         //hp증가
         _stat.SetHealth(Mathf.Max(CurrentHealth + amount, MaxHealth));
     }
@@ -33,7 +38,12 @@ public class PlayerHealth : MonoBehaviour, IHealth
     public void OnDead()
     {
         //시스템적으로 게임 종료처리
-        _base.Animator.SetBool("Ondead", true);
+        if (!_base.IsReady)
+            return;
+
+        SoundManager.Instance.CreateSFX(ESFXType.GameOver, transform.position);
+        _base.Animator.SetBool("OnDead", true);
+        _base.SetCollider(false);
         _base.IsReady = false;
     }
 
@@ -43,6 +53,4 @@ public class PlayerHealth : MonoBehaviour, IHealth
     {
         OnHit(40);
     }
-
-    
 }
