@@ -52,5 +52,8 @@ TagManager:
   - name: AttackObject
     uniqueID: 1864455661
     locked: 0
+  - name: Item
+    uniqueID: 2904162641
+    locked: 0
   m_RenderingLayers:
   - Default

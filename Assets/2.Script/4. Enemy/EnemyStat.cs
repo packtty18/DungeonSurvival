@@ -2,6 +2,7 @@
 
 public class EnemyStat : MonoBehaviour
 {
+    private EnemyBase _base;
     [Header("Runtime Stats")]
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _health;
@@ -19,13 +20,10 @@ public class EnemyStat : MonoBehaviour
     [Header("Base Stat SO")]
     [SerializeField] private EnemyStatSO _baseStat;
 
-    private void Awake()
-    {
-        Init();
-    }
 
-    public void Init()
+    public void Init(EnemyBase enemyBase)
     {
+        _base = enemyBase;
         if (_baseStat != null)
         {
             ApplyBaseStat(_baseStat);

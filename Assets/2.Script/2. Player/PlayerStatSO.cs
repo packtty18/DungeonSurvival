@@ -5,6 +5,7 @@ public class PlayerStatSO : ScriptableObject
 {
     [Header("Basic Stats")]
     public int Level = 1;
+    public float NextExp = 10;
     public float MaxHealth = 100;
     public float RegenerationHealth = 0.1f;      // 초당 회복
     public float Damage = 10f;                   // 데미지

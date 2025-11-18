@@ -3,6 +3,7 @@
 public class EnemyAnimation : MonoBehaviour
 {
     //적의 스프라이트 및 애니메이션 처리
+    private EnemyBase _base;
     [SerializeField] private Transform _spriteObject;
     private SpriteRenderer _renderer;
     private Animator _animator;
@@ -17,8 +18,9 @@ public class EnemyAnimation : MonoBehaviour
         _animator = _spriteObject.GetComponent<Animator>();
     }
 
-    public void Init()
+    public void Init(EnemyBase enemyBase)
     {
+        _base = enemyBase;
         SetDead();
     }
 

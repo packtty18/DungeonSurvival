@@ -9,7 +9,7 @@ public class EnemyFactory : FactoryBase<EEnemyType>
     [SerializeField] private GameObject _goblinPrefab;
     [SerializeField] private GameObject _flyPrefab;
     [SerializeField] private GameObject _skeletonPrefab;
-
+    [SerializeField] private GameObject _treasurePrefab;
     protected override void RegisterPrefabs()
     {
         _prefabMap = new Dictionary<EEnemyType, GameObject>
@@ -17,7 +17,8 @@ public class EnemyFactory : FactoryBase<EEnemyType>
             { EEnemyType.Mushroom, _mushroomPrefab },
             { EEnemyType.Goblin, _goblinPrefab },
             { EEnemyType.Fly, _flyPrefab },
-            { EEnemyType.Skeleton, _skeletonPrefab }
+            { EEnemyType.Skeleton, _skeletonPrefab },
+            { EEnemyType.Treasure, _treasurePrefab }
         };
     }
 

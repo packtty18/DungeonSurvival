@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 632972910401773831}
   - component: {fileID: 311248138316817308}
   m_Layer: 0
-  m_Name: PlayerAttackPrototype
+  m_Name: Attack_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

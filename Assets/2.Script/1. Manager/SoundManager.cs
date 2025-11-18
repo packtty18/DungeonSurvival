@@ -83,21 +83,12 @@ public class SoundManager : SimpleSingleton<SoundManager>
     {
         switch (itemType)
         {
-            case EItemType.HealthUp:
+            case EItemType.Exp:
                 {
                    CreateSFX(ESFXType.ItemHeal, transform.position, parent);
                     break;
                 }
-            case EItemType.AttackSpeedUp:
-                {
-                    CreateSFX(ESFXType.ItemAttackUp, transform.position, parent);
-                    break;
-                }
-            case EItemType.MoveSpeedUp:
-                {
-                    CreateSFX(ESFXType.ItemMoveUp, transform.position, parent);
-                    break;
-                }
+            
         }
     }
 

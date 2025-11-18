@@ -26,13 +26,14 @@ public class EnemyBase : MonoBehaviour, IPoolable
         _animation = GetComponent<EnemyAnimation>();
     }
 
+    [ContextMenu("OnSpawn")]
     public void OnSpawn()
     {
-        _stat.Init();
-        _health.Init();
-        _move.Init();
-        _attack.Init();
-        _animation.Init();
+        _stat?.Init(this);
+        _health?.Init(this);
+        _move?.Init(this);
+        _attack?.Init(this);
+        _animation?.Init(this);
         IsReady = true;
     }
 

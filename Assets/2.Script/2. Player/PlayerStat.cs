@@ -5,6 +5,8 @@ public class PlayerStat : MonoBehaviour
     private PlayerBase _base;
     [Header("Runtime Stats")]
     [SerializeField] private int _level;
+    [SerializeField] private float _currentExp;
+    [SerializeField] private float _nextExp;
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _health;
     [SerializeField] private float _damage;
@@ -28,6 +30,9 @@ public class PlayerStat : MonoBehaviour
     [SerializeField] private PlayerStatSO _baseStat;
 
     public int Level => _level;
+    public float CurrentExp => _currentExp;
+    public float NextExp => _nextExp;
+
     public float MaxHealth => _maxHealth;
     public float Health => _health;
     public float Damage => _damage;
@@ -57,6 +62,8 @@ public class PlayerStat : MonoBehaviour
     private void ApplyBaseStat(PlayerStatSO stat)
     {
         _level = stat.Level;
+        _currentExp = 0;
+        _nextExp = stat.NextExp;
         _maxHealth = stat.MaxHealth;
         _health = _maxHealth;
         _regenerationHealth = stat.RegenerationHealth;
@@ -78,6 +85,16 @@ public class PlayerStat : MonoBehaviour
     public void SetLevel(int level)
     {
         _level = level;
+    }
+
+    public void SetCurrentExp(float value)
+    {
+        _currentExp = value;
+    }
+
+    public void SetNextExp(float value)
+    {
+        _nextExp = value;
     }
     public void SetMaxHealth(float value)
     {

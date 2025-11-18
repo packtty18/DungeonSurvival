@@ -7,9 +7,9 @@
 
 public enum EItemType
 {
-    MoveSpeedUp,
-    HealthUp,
-    AttackSpeedUp
+    None,
+    Exp,
+    Treasure,
 }
 
 public enum EEnemyType
@@ -17,7 +17,8 @@ public enum EEnemyType
     Mushroom,
     Goblin,
     Fly,
-    Skeleton
+    Skeleton,
+    Treasure,
 }
 
 public enum EPlayerAIStateType

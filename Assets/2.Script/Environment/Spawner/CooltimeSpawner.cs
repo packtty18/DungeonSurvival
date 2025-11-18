@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class CooltimeSpawner : SpanwerBase
 {
@@ -39,27 +40,7 @@ public class CooltimeSpawner : SpanwerBase
             if (_spawnType == null || _spawnType.Length != _spawnWeight.Length)
                 return;
 
-            float totalWeight = 0f;
-            foreach (float w in _spawnWeight)
-            {
-                totalWeight += w;
-            }
-
-
-            float randomValue = Random.Range(0f, totalWeight);
-
-            float cumulateSum = 0f;
-            int selectedIndex = 0;
-
-            for (int i = 0; i < _spawnWeight.Length; i++)
-            {
-                cumulateSum += _spawnWeight[i];
-                if (randomValue <= cumulateSum)
-                {
-                    selectedIndex = i;
-                    break;
-                }
-            }
+            EEnemyType target = StaticMethod.WeightedRandom(_spawnType, _spawnWeight);
 
             if (!FactoryManager.IsManagerExist())
             {
@@ -67,7 +48,7 @@ public class CooltimeSpawner : SpanwerBase
             }
 
             EnemyFactory factory = FactoryManager.Instance.GetFactory<EnemyFactory>();
-            EnemyBase enemy = factory.MakeEnemy(_spawnType[selectedIndex], _spawnTrasnform[Random.Range(0, _spawnTrasnform.Length)].transform.position).GetComponent<EnemyBase>();
+            EnemyBase enemy = factory.MakeEnemy(target, _spawnTrasnform[Random.Range(0, _spawnTrasnform.Length)].transform.position).GetComponent<EnemyBase>();
 
             //enemy.SetStatMultiplier(1 + (0.2f * SaveManager.Instance.GetSaveData().CurrentPhase));
         }

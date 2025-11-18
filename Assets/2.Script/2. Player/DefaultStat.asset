@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DefaultStat
   m_EditorClassIdentifier: 
   Level: 1
+  NextExp: 10
   MaxHealth: 100
   RegenerationHealth: 0.1
   Damage: 10
@@ -24,5 +25,5 @@ MonoBehaviour:
   SkillLiveTimeMultiplierRate: 0
   SkillSelectCount: 2
   ItemAcquisitionRadius: 2
-  ExpMultiplierRate: 1.5
+  ExpMultiplierRate: 0.1
   TreasureBoxDropRate: 0.2
