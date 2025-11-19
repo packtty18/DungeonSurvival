@@ -8,7 +8,9 @@
 public enum EItemType
 {
     None,
-    Exp,
+    ExpSmall,
+    ExpMiddle,
+    ExpHigh,
     Treasure,
 }
 

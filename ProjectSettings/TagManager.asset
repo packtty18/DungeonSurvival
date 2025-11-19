@@ -9,6 +9,8 @@ TagManager:
   - FxTemporaire
   - Ground
   - Area
+  - Bullet
+  - Item
   layers:
   - Default
   - TransparentFX

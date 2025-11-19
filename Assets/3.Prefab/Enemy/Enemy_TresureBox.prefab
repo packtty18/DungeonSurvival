@@ -300,6 +300,7 @@ MonoBehaviour:
   _health: 0
   _damage: 0
   _moveSpeed: 0
+  _score: 0
   _isTargetToPlayer: 0
   _baseStat: {fileID: 11400000, guid: ed8b246c4089ef14eb05f6ff0733b34d, type: 2}
 --- !u!114 &8493622836566666466
@@ -340,6 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c9d3db25e5ba34fb6ad6331af69cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targets: 01000000
+  _targets: 0200000003000000
   _weights:
-  - 100
+  - 90
+  - 10

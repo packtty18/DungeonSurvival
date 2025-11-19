@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerImage : MonoBehaviour
 {
-    public SpriteRenderer playerRenderer;
+    public SpriteRenderer playerRenderer => GameManager.Instance.Player.GetComponent<SpriteRenderer>();
     private Image _imageUI;
 
     private void Start()

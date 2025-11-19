@@ -18,8 +18,9 @@ public class ItemDropper : MonoBehaviour
     public void SpawnRandomItem()
     {
         if (_targets == null || _targets.Length != _weights.Length)
+        {
             return;
-
+        }
         EItemType target = StaticMethod.WeightedRandom(_targets, _weights);
         if(target == EItemType.None)
         {

@@ -334,7 +334,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.01, y: 0.07, z: 0.06442863}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7933196339851828423}
@@ -446,8 +446,9 @@ MonoBehaviour:
   _health: 0
   _damage: 0
   _moveSpeed: 0
+  _score: 0
   _isTargetToPlayer: 0
-  _baseStat: {fileID: 11400000, guid: af81336ec78fa404b8ea7dc1f8cbed9f, type: 2}
+  _baseStat: {fileID: 11400000, guid: 47210f558796e1346b74ab5a2309bfd6, type: 2}
 --- !u!114 &7590342005832671550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,8 +527,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c9d3db25e5ba34fb6ad6331af69cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targets: 000000000100000002000000
+  _targets: 01000000020000000300000004000000
   _weights:
-  - 60
-  - 30
   - 10
+  - 20
+  - 30
+  - 40

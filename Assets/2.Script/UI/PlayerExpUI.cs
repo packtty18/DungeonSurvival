@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHPUI : MonoBehaviour
+public class PlayerExpUI : MonoBehaviour
 {
     public PlayerStat Stat => GameManager.Instance.Player.GetComponent<PlayerStat>();
     private Slider _slider;
@@ -13,9 +13,8 @@ public class PlayerHPUI : MonoBehaviour
 
     private void Update()
     {
-        if(Stat == null)
+        if (Stat == null)
             return;
-        _slider.value = Stat.Health / Stat.MaxHealth;
+        _slider.value = Stat.CurrentExp / Stat.NextExp;
     }
-
 }

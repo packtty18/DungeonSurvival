@@ -7,15 +7,18 @@ public class ItemFactory : FactoryBase<EItemType>
     //즉 BulletBase를 상속받는 클래스들 담당 생성
 
     [Header("프리팹")]
-    [SerializeField] private GameObject _expPrefab;
+    [SerializeField] private GameObject _expSmallPrefab;
+    [SerializeField] private GameObject _expMiddlePrefab;
+    [SerializeField] private GameObject _expHighPrefab;
     [SerializeField] private GameObject _treasurePrefab;
     protected override void RegisterPrefabs()
     {
         _prefabMap = new Dictionary<EItemType, GameObject>
         {
-            { EItemType.Exp, _expPrefab },
+            { EItemType.ExpSmall, _expSmallPrefab },
+            { EItemType.ExpMiddle, _expMiddlePrefab },
+            { EItemType.ExpHigh, _expHighPrefab },
             { EItemType.Treasure, _treasurePrefab },
-
         };
     }
 

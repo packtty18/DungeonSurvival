@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class LevelText : MonoBehaviour
 {
-    public PlayerStat Stat;
+    public PlayerStat Stat => GameManager.Instance.Player.GetComponent<PlayerStat>();
     private Text _textUI;
 
     private void Start()

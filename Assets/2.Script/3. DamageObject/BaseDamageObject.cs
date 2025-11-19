@@ -9,18 +9,18 @@ public abstract class BaseDamageObject : MonoBehaviour, IPoolable, IAttackable
     protected bool isMoving = false;
 
     // 이동 상태를 위한 State 패턴
-    protected IDamageObjectState state;
+    protected IDamageObjectState _state;
 
     public virtual void OnSpawn()
     {
-        state?.Enter(this);
+        _state?.Enter(this);
         gameObject.SetActive(true);
     }
 
     public virtual void OnDespawn()
     {
         gameObject.SetActive(false);
-        state?.Exit();
+        _state?.Exit();
     }
 
     public void SetDamage(float damage)
@@ -30,13 +30,13 @@ public abstract class BaseDamageObject : MonoBehaviour, IPoolable, IAttackable
 
     protected virtual void Update()
     {
-        state?.Tick(Time.deltaTime);
+        _state?.Tick(Time.deltaTime);
     }
 
     public void SetState(IDamageObjectState newState)
     {
-        state?.Exit();
-        state = newState;
-        state?.Enter(this);
+        _state?.Exit();
+        _state = newState;
+        _state?.Enter(this);
     }
 }

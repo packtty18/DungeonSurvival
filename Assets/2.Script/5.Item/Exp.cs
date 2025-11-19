@@ -2,7 +2,7 @@
 
 public class Exp : ItemBase
 {
-    private const float DEFAULT_EXP_VALUE = 10;
+    private const float DEFAULT_EXP_VALUE = 2;
 
     protected override void Init()
     {

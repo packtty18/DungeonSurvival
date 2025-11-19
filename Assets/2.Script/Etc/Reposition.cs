@@ -40,7 +40,7 @@ public class Reposition : MonoBehaviour
                     }
                    break;
                 }
-            case "Enemy":
+            default:
                 {
                     if (!_collider.enabled) 
                         break;
@@ -66,7 +66,7 @@ public class Reposition : MonoBehaviour
 
                     transform.position = newPos;
 
-                    Debug.Log($"Enemy repositioned:{save} -> {transform.position}");
+                    Debug.Log($"repositioned:{save} -> {transform.position}");
                     break;
                 }
         }

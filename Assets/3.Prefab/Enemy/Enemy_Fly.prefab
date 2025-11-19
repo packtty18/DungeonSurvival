@@ -446,8 +446,9 @@ MonoBehaviour:
   _health: 0
   _damage: 0
   _moveSpeed: 0
+  _score: 0
   _isTargetToPlayer: 0
-  _baseStat: {fileID: 11400000, guid: af81336ec78fa404b8ea7dc1f8cbed9f, type: 2}
+  _baseStat: {fileID: 11400000, guid: 365b40dfda4ba3e498dc08e91af3ebc7, type: 2}
 --- !u!114 &7590342005832671550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,8 +527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c9d3db25e5ba34fb6ad6331af69cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targets: 000000000100000002000000
+  _targets: 000000000100000004000000
   _weights:
-  - 60
-  - 30
+  - 70
+  - 20
   - 10
